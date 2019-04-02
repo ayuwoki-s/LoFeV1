@@ -1,0 +1,41 @@
+<ion-header no-border>
+    <ion-toolbar>
+  
+     <ion-buttons slot="start">
+       <ion-button (click)="noArguments()" fill="outline">Cancelar</ion-button>
+     </ion-buttons>
+  
+      <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon name="contact"></ion-icon>
+            <ion-label>Bryan</ion-label>
+          </ion-button>
+      </ion-buttons>
+  
+   </ion-toolbar>
+  
+  </ion-header>
+
+  <!-- ***COMIENZA EL CONTENT*** -->
+<ion-content>
+
+  <ion-title text-center>Selecciona a un amigo</ion-title>
+
+  <!-- este es nuestro searchbar debemos inlcuir el metodo ionchange -->
+  <ion-searchbar animated (ionChange)="buscar( $event )"></ion-searchbar>
+
+  <ion-list>
+
+    <!-- En esa parte use un pipe personalizado llamado filtro que recibe 2 parametros textoBuscar y nombre -->
+    <ion-item *ngFor="let amigo of amigos | filtro: textoBuscar: 'nombre'" detail (click)="onClick( amigo )">
+
+      <ion-label> {{ amigo.nombre }}</ion-label>
+      <ion-avatar slot="start">
+        <img [src]="amigo.img">
+      </ion-avatar>
+
+    </ion-item>
+
+  </ion-list>
+  
+</ion-content>

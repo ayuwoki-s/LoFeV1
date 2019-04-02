@@ -1,0 +1,31 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Amigos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Creamos una referencia con el hash para usar un viewChild en el ts -->
+  <ion-list #lista>
+
+    <!-- Cuando se usa item-sliding el que se duplica es el sliding y no el item -->
+    <ion-item-sliding *ngFor="let friend of friends | async">
+      <!-- Use el pipe async por que el ngFor solo funciona el arreglos pero estoy usando un Observable -->
+      <ion-item >
+        <ion-label>{{ friend.nombre }}</ion-label>
+        <ion-avatar slot="start">
+          <img [src]="friend.img">
+        </ion-avatar>
+      </ion-item>
+
+      <ion-item-options side="start">
+          <ion-item-option (click)="favorite( friend )">Agregar</ion-item-option>
+          <ion-item-option color="danger" (click)="share( friend )">Ver</ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+    
+  </ion-list>
+
+</ion-content>

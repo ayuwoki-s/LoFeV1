@@ -1,0 +1,27 @@
+[
+    {   
+        "idEmoji": "1",
+        "nombre": "molesto",
+        "img": "/assets/img/furius.png"
+    },
+    {   
+        "idEmoji": "2",
+        "nombre": "feliz",
+        "img": "/assets/img/happy.png"
+    },
+    {   
+        "idEmoji": "3",
+        "nombre": "raro",
+        "img": "/assets/img/pokerface.png"
+    },
+    {   
+        "idEmoji": "4",
+        "nombre": "aterrador",
+        "img": "/assets/img/sadness.jpg"
+    },
+    {   
+        "idEmoji": "5",
+        "nombre": "triste",
+        "img": "/assets/img/cry.jpg"
+    }
+]

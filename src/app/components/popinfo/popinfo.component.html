@@ -1,0 +1,8 @@
+<!-- En esta parte se mostraran los emogis obtenido de la BD -->
+  <ion-list>
+
+    <ion-item *ngFor="let emoji of emojis | async" detail (click)="onClick( emoji )">
+      <ion-label>{{ emoji.nombre }}</ion-label>
+    </ion-item>
+
+  </ion-list>

@@ -1,0 +1,105 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+
+    <ion-title>
+      Bienvenido
+    </ion-title>
+
+    <ion-buttons slot="end">
+        <ion-button>
+          <ion-label>{{ usuario }}</ion-label>
+        </ion-button>
+    </ion-buttons>
+
+ </ion-toolbar>
+
+</ion-header>
+
+ <!-- ***COMIENZA CONTENT*** -->
+<ion-content class="content">
+  
+  <ion-card color="light" mode="ios">
+
+    <ion-card-header text-center> <ion-label text-center class="bold">Crear Publicación</ion-label> </ion-card-header>
+
+  </ion-card>
+
+  <ion-card  color="medium" mode="ios" class="card1">
+
+      <form [formGroup]="validacion" (ngSubmit)="onSubmitTemplate()">
+      
+        <ion-list>
+
+          <ion-item>
+            <ion-label position="floating">¿Que sucedio?</ion-label>
+            <ion-input type="text" name="nombreEvento" formControlName="titulo"></ion-input>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label position="floating">¿Como fue?</ion-label>
+            <ion-input type="text" name="descripcion" formControlName="contenido"></ion-input>
+          </ion-item>
+          
+          <!-- El siguiente item solo aparece cuando la bandera de amigo ya no esta en false -->
+          <ion-item *ngIf="amigoFlag">
+            <ion-label >Con:</ion-label>
+            <ion-button (click)="openFriends()" style="margin-right: 80px" fill="outline"> {{evento.amigo.event.nombre}} </ion-button>
+            <ion-avatar slot="start" class="border">
+              <img [src]="evento.amigo.event.img">
+            </ion-avatar>
+          </ion-item>
+    
+          <!-- Seccion de emoji y camara -->
+          <ion-row>
+  
+            <ion-col *ngIf="!emojiFlag">
+              <ion-item>
+                <ion-button fill="outline" (click)="mostrarPop( $event )">Fue:(Selecciona una emocion)</ion-button>
+              </ion-item>
+            </ion-col>
+  
+            <ion-col *ngIf="emojiFlag">
+              <ion-item>
+
+                <ion-avatar slot="end">
+                  <img [src]="evento.emoji.item.img" class="emoji">
+                </ion-avatar>
+
+                <ion-label>Fue:</ion-label>
+
+                <ion-button fill="outline" (click)="mostrarPop( $event )"> {{ evento.emoji.item.nombre }} </ion-button>
+
+              </ion-item>
+
+            </ion-col>
+  
+            <ion-col>
+                <ion-button>
+                    <ion-icon slot="icon-only" name="camera"></ion-icon>
+                </ion-button>
+            </ion-col>
+            
+          </ion-row>
+
+      </ion-list>
+      
+   </form>
+      
+
+  </ion-card>
+
+  <!-- Seccion de botones -->
+  <ion-row>
+
+    <!-- Desaparece cuado amigoFlag esta en true, por defecto esta en false vet home.page.ts -->
+      <ion-col *ngIf="!amigoFlag">
+          <ion-button expand="full" color="danger" fill="solid" (click)="openFriends()">Etiquetar amigos</ion-button>
+      </ion-col>
+
+      <ion-col>
+          <ion-button expand="full" color="primary" type="submit" (click)="onSubmitTemplate()" [disabled]="validacion.invalid">Publicar</ion-button>
+      </ion-col>
+
+   </ion-row>
+
+</ion-content>

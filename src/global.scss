@@ -1,0 +1,52 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+@import '~@ionic/angular/css/display.css';
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+.imgCircle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 270px;
+    height: 270px;
+    border-radius: 150px;
+    border: 2px solid black;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.btn-border {
+    border-radius: 80px;
+}
+
+.content {
+    margin-top: 50px;
+}
+
+.bold {
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.card1 {
+    margin-top: 40px;
+    padding: 4px;
+}
+
+.border {
+  border: 1px solid black;
+}
+
+.emoji {
+    width: 40px;
+}

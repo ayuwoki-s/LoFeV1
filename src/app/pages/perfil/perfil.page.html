@@ -1,0 +1,29 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Mi historia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <ion-item>
+      <ion-label>Usuario</ion-label>
+    </ion-item>
+  </ion-row>
+
+   <ion-title text-center>Publicaciones</ion-title>
+
+  <ion-card *ngFor="let evento of eventos">
+
+    <ion-card-header>
+      <ion-card-title> {{evento.NombreEvento}} </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+        {{ evento.Descripcion }}
+    </ion-card-content>
+  
+  </ion-card>
+
+</ion-content>

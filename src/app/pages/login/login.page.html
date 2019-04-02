@@ -1,0 +1,44 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-title text-center>Iniciar sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img src="/assets/img/lobo.png" class="imgCircle">
+
+  <form #formLogin="ngForm" (ngSubmit)="onSubmitTemplate(buscarUser.value,buscarPass.value)">
+
+    <ion-list>
+  
+      <ion-item>
+        
+        <ion-label position="stacked">Correo electronico:</ion-label>
+        <ion-input placeholder="Escribe tu correo" type="email" name="email" required #buscarUser></ion-input>
+  
+      </ion-item>
+  
+      <ion-item>
+        
+        <ion-label position="stacked">Contraseña:</ion-label>
+        <ion-input placeholder="Escribe tu contraseña" type="password" required #buscarPass></ion-input>
+        
+      </ion-item>
+  
+    </ion-list>
+  
+    <ion-row class="row">
+  
+      <ion-col>
+        <ion-button expand="full" color="danger" (click)="abrirRegistro()" class="btn-border">Registrarse</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="full" color="primary" type="submit">Ingresar</ion-button>
+      </ion-col>
+  
+    </ion-row>
+
+  </form>
+
+</ion-content>

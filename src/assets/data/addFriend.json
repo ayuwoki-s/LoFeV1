@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "nombre": "Profesor hipolito",
+        "img": "/assets/img/0p.jpg"
+    },
+    {
+        "id": "2",
+        "nombre": "Link In Park",
+        "img": "/assets/img/link.jpg"
+    },
+    {   
+        "id": "3",
+        "nombre": "Zoila mamadora",
+        "img": "/assets/img/jeje.png"
+    },
+    {   
+        "id": "4",
+        "nombre": "Zarco",
+        "img": "/assets/img/dog.jpg"
+    },
+    {
+        "id": "5",
+        "nombre": "Benito Camelo",
+        "img": "/assets/img/YaTeVi.jpg"
+    },
+    {
+        "id": "6",
+        "nombre": "El mameitor",
+        "img": "/assets/img/mad.jpg"
+    },
+    {   
+        "id": "7",
+        "nombre": "Juan Gabriel",
+        "img": "/assets/img/dog.jpg"
+    },
+    {   
+        "id": "8",
+        "nombre": "Benito Juarez",
+        "img": "/assets/img/YaTeVi.jpg"
+    },
+    {   
+        "id": "9",
+        "nombre": "Toromax",
+        "img": "/assets/img/mad.jpg"
+    }
+]

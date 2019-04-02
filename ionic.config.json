@@ -1,0 +1,7 @@
+{
+  "name": "LoFe",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

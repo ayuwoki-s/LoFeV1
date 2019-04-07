@@ -14,7 +14,7 @@
 
    <ion-title text-center>Publicaciones</ion-title>
 
-  <ion-card *ngFor="let evento of eventos">
+  <ion-card *ngFor="let evento of eventos | async">
 
     <ion-card-header>
       <ion-card-title> {{evento.NombreEvento}} </ion-card-title>

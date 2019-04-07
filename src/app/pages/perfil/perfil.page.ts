@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-perfil',
@@ -8,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PerfilPage implements OnInit {
 
-  eventos: any[] = [];
+  eventos: Observable<any>; // se usan observables en lugar de objetos
 
   constructor(
     private dataServ: DataService

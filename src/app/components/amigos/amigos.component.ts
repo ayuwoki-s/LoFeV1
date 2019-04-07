@@ -22,9 +22,9 @@ export class AmigosComponent implements OnInit {
 
   ngOnInit() {
    // this.amigos = this.dataServ.getFriends();
-   this.dataServ.getFriends().subscribe( amigos => {
-     console.log( amigos);
-     this.amigos = amigos;
+   this.dataServ.getFriends().subscribe( data => {
+     console.log( data);
+     this.amigos = data;
    });
   }
 

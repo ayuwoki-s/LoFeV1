@@ -11,15 +11,17 @@ import { RegistroComponent } from 'src/app/components/registro/registro.componen
 })
 export class LoginPage implements OnInit {
 
+  // se inyectan los modulos servicios y controladores que usaremos
   constructor(
-    private dataServ: DataService,
-    private route: Router,
-    private modalCtr: ModalController
+    private dataServ: DataService, // nuestro servicio 
+    private route: Router, // para usar navigated mas abajo
+    private modalCtr: ModalController // para abrir la ventana de registro
   ) { }
 
   ngOnInit() {
   }
 
+  // cuando se presiona el boton ingresar
   onSubmitTemplate( usuario: string, password: string) {
 
     console.log('formulario terminado');
@@ -33,6 +35,7 @@ export class LoginPage implements OnInit {
 
   }
 
+  // para abrir registro
   async abrirRegistro() {
     const registro = await this.modalCtr.create({
       component: RegistroComponent

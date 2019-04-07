@@ -1,6 +1,6 @@
 import { Component} from '@angular/core';
 // ***Imports agregador por el programador
-import { PopoverController, ModalController } from '@ionic/angular';
+import { PopoverController, ModalController, ToastController } from '@ionic/angular';
 import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
 import { DataService } from 'src/app/services/data.service';
@@ -38,7 +38,8 @@ evento = {
     private popCtr: PopoverController,
     private modalCtr: ModalController,
     private dataSer: DataService,
-    private formBuild: FormBuilder
+    private formBuild: FormBuilder,
+    private toast: ToastController
     ) {
       this.evento.fecha = new Date().getDate().toString();
       this.usuario = this.dataSer.getUser();
@@ -95,8 +96,19 @@ evento = {
      console.log('Informacion recibida en el padre', data ); // solo es para confirmar los datos recibidos
     }
 
+    async presentToast( message: string ) {
+      const toast = await this.toast.create({
+        message,
+        duration: 2000,
+        position: 'middle',
+        animated: true
+      });
+      toast.present();
+    }
+
     onSubmitTemplate() {
 
+      this.presentToast('Evento Publicado');
       console.log(this.evento);
       // usamos una funcion asincrona para recargar la pagina despues de publicar
       setTimeout( () => location.reload(), 3000);

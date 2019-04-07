@@ -8,7 +8,7 @@
         "img": "/assets/img/link.jpg"
     },
     {
-        "nombre": "Zoila mamadora",
+        "nombre": "Princesa Guerrera",
         "img": "/assets/img/jeje.png"
     },
     {
@@ -16,11 +16,15 @@
         "img": "/assets/img/dog.jpg"
     },
     {
-        "nombre": "Benito Camelo",
+        "nombre": "Benito Juarez",
         "img": "/assets/img/YaTeVi.jpg"
     },
     {
-        "nombre": "El mameitor",
+        "nombre": "Angel Galvan",
+        "img": "/assets/img/mad.jpg"
+    },
+    {
+        "nombre": "Osvaldo Viera",
         "img": "/assets/img/mad.jpg"
     }
 ]

@@ -7,122 +7,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  // objeto de evento
-  evento: any[] = [
-    {
-      idEvento: 1,
-      NombreEvento: 'Pelea en los pasillos',
-      Descripcion: 'Mi novio se peleo con mi amigo',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '3',
-      Amigos_idAmigos: '4'
-    },
-    {
-      idEvento: 2,
-      NombreEvento: 'Me rei mucho',
-      Descripcion: 'Lorem ipsum, ratione sequi deleniti sapoloremque corporis eveniet at ad nisi soluta laborum.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '1',
-      Amigos_idAmigos: '6'
-    },
-    {
-      idEvento: 3,
-      NombreEvento: 'Pelea con mi novio',
-      // tslint:disable-next-line:max-line-length
-      Descripcion: 'Lorem ipsum dolor sit amet consectetur,sint dolores iusto ab quaerat assumenda debitis quas itaque dolore architecto inventore repellat hic.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '5',
-      Amigos_idAmigos: '2'
-    },
-    {
-      idEvento: 1,
-      NombreEvento: 'Pelea en los pasillos',
-      Descripcion: 'Mi novio se peleo con mi amigo',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '3',
-      Amigos_idAmigos: '4'
-    },
-    {
-      idEvento: 2,
-      NombreEvento: 'Me rei mucho',
-      Descripcion: 'Lorem ipsum, ratione sequi deleniti sapoloremque corporis eveniet at ad nisi soluta laborum.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '1',
-      Amigos_idAmigos: '6'
-    },
-    {
-      idEvento: 3,
-      NombreEvento: 'Pelea con mi novio',
-      // tslint:disable-next-line:max-line-length
-      Descripcion: 'Lorem ipsum dolor sit amet consectetur,sint dolores iusto ab quaerat assumenda debitis quas itaque dolore architecto inventore repellat hic.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '5',
-      Amigos_idAmigos: '2'
-    },
-    {
-      idEvento: 1,
-      NombreEvento: 'Pelea en los pasillos',
-      Descripcion: 'Mi novio se peleo con mi amigo',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '3',
-      Amigos_idAmigos: '4'
-    },
-    {
-      idEvento: 2,
-      NombreEvento: 'Me rei mucho',
-      Descripcion: 'Lorem ipsum, ratione sequi deleniti sapoloremque corporis eveniet at ad nisi soluta laborum.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '1',
-      Amigos_idAmigos: '6'
-    },
-    {
-      idEvento: 3,
-      NombreEvento: 'Pelea con mi novio',
-      // tslint:disable-next-line:max-line-length
-      Descripcion: 'Lorem ipsum dolor sit amet consectetur,sint dolores iusto ab quaerat assumenda debitis quas itaque dolore architecto inventore repellat hic.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '5',
-      Amigos_idAmigos: '2'
-    },
-    {
-      idEvento: 1,
-      NombreEvento: 'Pelea en los pasillos',
-      Descripcion: 'Mi novio se peleo con mi amigo',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '3',
-      Amigos_idAmigos: '4'
-    },
-    {
-      idEvento: 2,
-      NombreEvento: 'Me rei mucho',
-      Descripcion: 'Lorem ipsum, ratione sequi deleniti sapoloremque corporis eveniet at ad nisi soluta laborum.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '1',
-      Amigos_idAmigos: '6'
-    },
-    {
-      idEvento: 3,
-      NombreEvento: 'Pelea con mi novio',
-      // tslint:disable-next-line:max-line-length
-      Descripcion: 'Lorem ipsum dolor sit amet consectetur,sint dolores iusto ab quaerat assumenda debitis quas itaque dolore architecto inventore repellat hic.',
-      Fecha: '29',
-      Lugar_idLugar: '2345',
-      Emocion_idEmocion: '5',
-      Amigos_idAmigos: '2'
-    }
-  ];
-
   // creamos un arreglo temporal
   private arr: any = [
     {
@@ -201,7 +85,8 @@ export class DataService {
   }
 
   getEvento() {
-    return this.evento;
+    // return this.evento;
+    return this.http.get<any[]>('/assets/data/eventos.json');
   }
 
   // regresa la consulta de amigos

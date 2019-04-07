@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'; // importar para usar Forms
+import { DataService } from 'src/app/services/data.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-registro',
@@ -12,15 +15,20 @@ export class RegistroComponent implements OnInit {
   registro: any = {}; // v1.crear un objeto vacio
 
   persona = {
-      nombreP: '',
-      apellidos: '',
-      correo: '',
-      usuario: '',
-      contrasena: ''
+      nombresUsuario: 'Pruebin',
+      APAUsuario: 'Ahuevo',
+      AMAUsuario: 'Sisale',
+      correoUsuario: 'pruebin@gmail.com',
+      nicknameUsuario: 'Dr.Pruebas',
+      imagenUsuario: 'default.png',
+      contrasenaUsuario: '123'
     };
+
   constructor(
     private modalCtr: ModalController,
-    private formBuil: FormBuilder // v2. inyectar
+    private formBuil: FormBuilder, // v2. inyectar
+    private dataSer: DataService,
+    private http: HttpClient
   ) {
 
     this.registro = this.formBuil.group({ // v.3 crear estructura de validacion
@@ -53,4 +61,22 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+prueba() {
+
+  console.log('convert', JSON.stringify( this.persona ));
+  this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( this.persona ))
+  .subscribe( data => {
+    console.log(data);
+  },
+  (err) => {
+    console.log(err);
+  });
+  /*this.dataSer.putUser(this.persona).subscribe( data => {
+    console.log( data);
+   },
+   (err) => {
+     console.log(err);
+   });
+  }*/
+  }
 }

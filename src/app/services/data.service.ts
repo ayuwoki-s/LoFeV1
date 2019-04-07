@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -97,5 +97,18 @@ export class DataService {
   // regresa la consulta de los emojis
   getEmojis() {
     return this.http.get<any[]>('/assets/data/emojis.json');
+  }
+
+  // consumir api
+  getUsers() {
+    return this.http.get(`http://localhost/apiLofe/public/api/usuarios`);
+  }
+
+  putUser( data ) {
+    console.log('data recibida:', data);
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    return this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( data ));
   }
 }

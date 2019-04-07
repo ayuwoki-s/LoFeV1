@@ -20,7 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule, // importado
+    HttpClientModule, // importado para peticiones 
     PipesModule,  // importado
     FormsModule,
     ReactiveFormsModule // importar Forms y ReactiveFormsModule para usar validacion reactiva

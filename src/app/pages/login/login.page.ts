@@ -19,6 +19,9 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.dataServ.getUsers().subscribe( data => {
+      console.log('los datos son:', data);
+    });
   }
 
   // cuando se presiona el boton ingresar

@@ -26,35 +26,49 @@
     
         <ion-item>
           <ion-label position="floating">Nombres:</ion-label>
-          <ion-input 
+          <ion-input [(ngModel)]="persona.nombresUsuario"
                      name="nombreP"
                      formControlName="nombreP"></ion-input>
         </ion-item>
     
         <ion-item>
-            <ion-label position="floating">Apellidos:</ion-label>
-            <ion-input 
+            <ion-label position="floating">Apellido Paterno:</ion-label>
+            <ion-input [(ngModel)]="persona.APAUsuario"
                        name="apellidos"
-                       formControlName="apellidos"></ion-input>
+                       formControlName="apellidosP"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Apellido Materno:</ion-label>
+          <ion-input [(ngModel)]="persona.AMAUsuario"
+                     name="apellidos"
+                     formControlName="apellidosM"></ion-input>
         </ion-item>
     
         <ion-item>
             <ion-label position="floating">Correo:</ion-label>
-            <ion-input 
+            <ion-input [(ngModel)]="persona.correoUsuario"
                        name="correo"
                        formControlName="correo"></ion-input>
         </ion-item>
     
         <ion-item>
-            <ion-label position="floating">Usuaio:</ion-label>
-            <ion-input 
+            <ion-label position="floating">Usuario:</ion-label>
+            <ion-input [(ngModel)]="persona.nicknameUsuario"
                        name="usuario"
                        formControlName="usuario"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Imagen:</ion-label>
+          <ion-input [(ngModel)]="persona.imagenUsuario"
+                     name="usuario"
+                     formControlName="imagen"></ion-input>
         </ion-item>
     
         <ion-item>
             <ion-label position="floating">Cotraseña:</ion-label>
-            <ion-input 
+            <ion-input [(ngModel)]="persona.contrasenaUsuario"
                        name="contrasena"
                        formControlName="contrasena"></ion-input>
         </ion-item>

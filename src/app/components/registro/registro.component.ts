@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms'; // importar para usar Forms
 import { DataService } from 'src/app/services/data.service';
-import { HttpClient } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
+
 
 
 @Component({
@@ -14,28 +15,22 @@ export class RegistroComponent implements OnInit {
 
   registro: any = {}; // v1.crear un objeto vacio
 
-  persona = {
-      nombresUsuario: 'Pruebin',
-      APAUsuario: 'Ahuevo',
-      AMAUsuario: 'Sisale',
-      correoUsuario: 'pruebin@gmail.com',
-      nicknameUsuario: 'Dr.Pruebas',
-      imagenUsuario: 'default.png',
-      contrasenaUsuario: '123'
-    };
+  persona = {};
 
   constructor(
     private modalCtr: ModalController,
     private formBuil: FormBuilder, // v2. inyectar
     private dataSer: DataService,
-    private http: HttpClient
+    private http: Http
   ) {
 
     this.registro = this.formBuil.group({ // v.3 crear estructura de validacion
       nombreP: ['', Validators.required],
-      apellidos: ['', Validators.required],
+      apellidosP: ['', Validators.required],
+      apellidosM: ['', Validators.required],
       correo: ['', Validators.required],
       usuario: ['', Validators.required],
+      imagen: ['', Validators.required],
       contrasena: ['', Validators.required]
     });
   }
@@ -61,22 +56,12 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+  // *Funcion para meter los datos en la bd
 prueba() {
+  console.log(this.persona); // solo para visualizar datos ingresado
 
-  console.log('convert', JSON.stringify( this.persona ));
-  this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( this.persona ))
-  .subscribe( data => {
-    console.log(data);
-  },
-  (err) => {
-    console.log(err);
-  });
-  /*this.dataSer.putUser(this.persona).subscribe( data => {
-    console.log( data);
-   },
-   (err) => {
-     console.log(err);
-   });
-  }*/
+  console.log(JSON.stringify( this.persona )); // para visualizar si se hace la convercion 
+
+  this.dataSer.putUser(this.persona);
   }
 }

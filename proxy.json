@@ -1,0 +1,7 @@
+{
+    "/apiLofe/*": {
+        "target": "http://localhost/apiLofe/public/api/usuarios/post",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

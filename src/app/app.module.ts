@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { PipesModule } from './pipes/pipes.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule, // importado para peticiones 
     PipesModule,  // importado
     FormsModule,
-    ReactiveFormsModule // importar Forms y ReactiveFormsModule para usar validacion reactiva
+    ReactiveFormsModule, // importar Forms y ReactiveFormsModule para usar validacion reactiva
+    HttpModule
   ],
   providers: [
     StatusBar,

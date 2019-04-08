@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 
 @Injectable({
@@ -41,7 +42,7 @@ export class DataService {
   ];
 
   // inyectar HttpClient
-  constructor( private http: HttpClient) { }
+  constructor( private http: Http) { }
 
   // *funcion para obtener los amigos de amigo.json
   getFriends() {
@@ -99,16 +100,38 @@ export class DataService {
     return this.http.get<any[]>('/assets/data/emojis.json');
   }
 
-  // consumir api
+  // ******************************** Zona de metodos que consumen la api
+
+  // Get tabla usuarios de api
   getUsers() {
     return this.http.get(`http://localhost/apiLofe/public/api/usuarios`);
   }
+  // Final Get
 
+  // Put tabla usuarios para api
   putUser( data ) {
-    console.log('data recibida:', data);
-    const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
 
-    return this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( data ));
+    const headers = new Headers( // se definen los headers
+      {
+        'Content-Type' : 'application/json'
+      });
+
+    const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
+
+    return new Promise((resolve, reject) => { // creamos una promesa
+      this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( data ), options)
+      .toPromise()
+      .then((response) => { // si hay respuesta favorable
+        console.log('API Response : ', response.json());
+        resolve(response.json());
+      })
+      .catch((error) => { // si hay un reject
+        console.error('API Error : ', error.status);
+        console.error('API Error : ', JSON.stringify(error));
+        reject(error.json());
+      });
+    });
   }
+  // Fin Put tabla usuarios para api
+
 }

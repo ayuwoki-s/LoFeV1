@@ -32,20 +32,20 @@
 
           <ion-item>
             <ion-label position="floating">¿Que sucedio?</ion-label>
-            <ion-input type="text" name="nombreEvento" formControlName="titulo" ></ion-input>
+            <ion-input type="text" name="nombreEvento" formControlName="titulo" [(ngModel)]="evento.NombreEvento" ></ion-input>
           </ion-item>
     
           <ion-item>
             <ion-label position="floating">¿Como fue?</ion-label>
-            <ion-input type="text" name="descripcion" formControlName="contenido" ></ion-input>
+            <ion-input type="text" name="descripcion" formControlName="contenido" [(ngModel)]="evento.Descripcion" ></ion-input>
           </ion-item>
           
           <!-- El siguiente item solo aparece cuando la bandera de amigo ya no esta en false -->
           <ion-item *ngIf="amigoFlag">
             <ion-label >Con:</ion-label>
-            <ion-button (click)="openFriends()" style="margin-right: 80px" fill="outline"> {{evento.amigo.event.nombre}} </ion-button>
+            <ion-button (click)="openFriends()" style="margin-right: 80px" fill="outline"> {{da.event.nombre}} </ion-button>
             <ion-avatar slot="start" class="border">
-              <img [src]="evento.amigo.event.img">
+              <img [src]="da.event.img">
             </ion-avatar>
           </ion-item>
     
@@ -62,12 +62,12 @@
               <ion-item>
 
                 <ion-avatar slot="end">
-                  <img [src]="evento.emoji.item.img" class="emoji">
+                  <img [src]="dat.item.img" class="emoji">
                 </ion-avatar>
 
                 <ion-label>Fue:</ion-label>
 
-                <ion-button fill="outline" (click)="mostrarPop( $event )"> {{ evento.emoji.item.nombre }} </ion-button>
+                <ion-button fill="outline" (click)="mostrarPop( $event )"> {{ dat.item.nombre }} </ion-button>
 
               </ion-item>
 
@@ -100,6 +100,7 @@
           <ion-button expand="full" color="primary" type="submit" (click)="onSubmitTemplate()" [disabled]="validacion.invalid">Publicar</ion-button>
       </ion-col>
 
+      <ion-button expand="full" color="primary" type="submit" (click)="prueba()" >Publicar</ion-button>
    </ion-row>
 
 </ion-content>

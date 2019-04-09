@@ -1,29 +1,36 @@
 [
     {
+        "idAmigo": 1,
         "nombre": "Juan Mendez",
         "img": "/assets/img/0p.jpg"
     },
     {
+        "idAmigo": 2,
         "nombre": "Link In Park",
         "img": "/assets/img/link.jpg"
     },
     {
+        "idAmigo": 3,
         "nombre": "Princesa Guerrera",
         "img": "/assets/img/jeje.png"
     },
     {
+        "idAmigo": 4,
         "nombre": "Barry allen",
         "img": "/assets/img/dog.jpg"
     },
     {
+        "idAmigo": 5,
         "nombre": "Benito Juarez",
         "img": "/assets/img/YaTeVi.jpg"
     },
     {
+        "idAmigo": 6,
         "nombre": "Angel Galvan",
         "img": "/assets/img/mad.jpg"
     },
     {
+        "idAmigo": 7,
         "nombre": "Osvaldo Viera",
         "img": "/assets/img/mad.jpg"
     }

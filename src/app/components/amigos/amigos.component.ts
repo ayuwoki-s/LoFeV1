@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 // imports agregados por el programador
 import { ModalController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';

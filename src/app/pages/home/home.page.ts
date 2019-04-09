@@ -4,7 +4,6 @@ import { PopoverController, ModalController, ToastController } from '@ionic/angu
 import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
 import { DataService } from 'src/app/services/data.service';
-import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms'; // queda pendiente usar forBuilder aqui
 
 @Component({
@@ -20,14 +19,18 @@ validacion: any = {};
 
 // *** Datos para guardar en la bd
 evento = {
-  nombreEvento: '',
-  descripcion: '',
-  imagen: '', // cuando se tenga plugin de camara
-  fecha: Date(), // iniciar a la fecha del dia
-  lugar: 'Google', // igualar a googlemaps
-  emoji: '',
-  amigo: ''
+  NombreEvento: '',
+  Descripcion: '',
+  Imagen: 'default.png', // cuando se tenga plugin de camara
+  Fecha: Date(), // iniciar a la fecha del dia
+  Lugar_idLugar: '543', // igualar a googlemaps
+  Emocion_idEmocion: '',
+  Amigos_idAmigos: ''
 };
+
+  dat = {}; // para almacenar emojis
+  da = {}; // para almacenar de amigos
+
 // *** Datos para guardar en la bd
   amigoFlag = false; // bandera de amigo
   emojiFlag = false; // bandera de emoji
@@ -41,13 +44,16 @@ evento = {
     private formBuild: FormBuilder,
     private toast: ToastController
     ) {
-      this.evento.fecha = new Date().getDate().toString();
+
+      this.evento.Fecha = new Date().getDate().toString();
+
       this.usuario = this.dataSer.getUser();
 
       this.validacion = this.formBuild.group({
         titulo: ['', Validators.required],
         contenido: ['', Validators.required]
       });
+
     }
 
 // **** Aqui comienzan las funciones****
@@ -69,11 +75,12 @@ evento = {
      // para recibir los datos del popoverinfo usamos la desestructuracion
      const { data } = await popover.onDidDismiss();
      console.log('Elemento recibido', data);
+     this.dat = data; // para sacar nombre e imagen en el html
      this.emojiFlag = true;
-     this.evento.emoji = data;
+     this.evento.Emocion_idEmocion = data.item.idEmoji;
      // this.emoji = data;
      this.i = this.i + 1; // el contador aumenta
-     console.log('Mi emoji es:', this.evento.emoji); // solo es para referenci
+     console.log('Mi emoji es:', this.evento.Emocion_idEmocion); // solo es para referenci
    }
 
    // *Funcion para abrir pagina de amigos(Modal) se pone async por que usamos awaits dentro
@@ -91,7 +98,8 @@ evento = {
 
      const { data } = await friends.onDidDismiss(); // usando la destructuracion podemos recibir y extraer los datos del modal
      this.amigoFlag = true; // cambiar a true la bandera para usarla en el html
-     this.evento.amigo = data;
+     this.da = data;
+     this.evento.Amigos_idAmigos = data.event.idAmigo;
      // this.amigo = data;
      console.log('Informacion recibida en el padre', data ); // solo es para confirmar los datos recibidos
     }
@@ -112,6 +120,11 @@ evento = {
       console.log(this.evento);
       // usamos una funcion asincrona para recargar la pagina despues de publicar
       setTimeout( () => location.reload(), 3000);
+    }
+
+    prueba() {
+      console.log('Objeto a enviar:', this.evento);
+      console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion 
     }
 
 }

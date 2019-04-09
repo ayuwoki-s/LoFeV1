@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 // import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -42,11 +43,14 @@ export class DataService {
   ];
 
   // inyectar HttpClient
-  constructor( private http: Http) { }
+  constructor( private http: Http,
+               private https: HttpClient
+  ) { }
 
   // *funcion para obtener los amigos de amigo.json
   getFriends() {
-    return this.http.get<any[]>('/assets/data/amigo.json');
+    // return this.http.get<any[]>('/assets/data/amigo.json');
+    return this.https.get<any[]>('/assets/data/amigo.json');
   }
 
   // *funcion para obtener usuarios
@@ -54,7 +58,7 @@ export class DataService {
     return this.usuarios;
   }
 
-  // *funcion para buscar usuario
+  // *funcion par buscar usuario
   buscarUsuario( usuarioB: string, contrasenaB: string ) {
 
     for (let usuario of this.usuarios) {
@@ -87,24 +91,24 @@ export class DataService {
 
   getEvento() {
     // return this.evento;
-    return this.http.get<any[]>('/assets/data/eventos.json');
+    return this.https.get<any[]>('/assets/data/eventos.json');
   }
 
   // regresa la consulta de amigos
   getOtherFriends() {
-    return this.http.get<any[]>('/assets/data/addFriend.json');
+    return this.https.get<any[]>('/assets/data/addFriend.json');
   }
 
   // regresa la consulta de los emojis
   getEmojis() {
-    return this.http.get<any[]>('/assets/data/emojis.json');
+    return this.https.get<any[]>('/assets/data/emojis.json');
   }
 
   // ******************************** Zona de metodos que consumen la api
 
   // Get tabla usuarios de api
   getUsers() {
-    return this.http.get(`http://localhost/apiLofe/public/api/usuarios`);
+    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/usuarios`);
   }
   // Final Get
 
@@ -120,7 +124,7 @@ export class DataService {
 
     return new Promise((resolve, reject) => { // creamos una promesa
       this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( data ), options)
-      .toPromise()
+      .toPromise()  // has esto..
       .then((response) => { // si hay respuesta favorable
         console.log('API Response : ', response.json());
         resolve(response.json());

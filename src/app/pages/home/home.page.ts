@@ -1,17 +1,21 @@
-import { Component} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 // ***Imports agregador por el programador
 import { PopoverController, ModalController, ToastController } from '@ionic/angular';
 import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
 import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms'; // queda pendiente usar forBuilder aqui
+// maps
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { LoadingController } from '@ionic/angular'; // loading
+declare var google; // declaracion del namespace
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
 usuario: string;
 
@@ -42,6 +46,8 @@ evento = {
     private modalCtr: ModalController,
     private dataSer: DataService,
     private formBuild: FormBuilder,
+    private geolocation: Geolocation, // mapa
+    private loadingCtrl: LoadingController, // loading
     private toast: ToastController
     ) {
 
@@ -57,6 +63,44 @@ evento = {
     }
 
 // **** Aqui comienzan las funciones****
+  ngOnInit() {
+    this.loadMap(); // Carga el mapa al iniciar
+  }
+
+
+  async loadMap() {
+  const loading = await this.loadingCtrl.create(); // crea un loading
+  loading.present();
+
+  const rta = await this.geolocation.getCurrentPosition(); // obtiene posicion
+  const myLatLng = { // objeto de coordenadas
+    lat: rta.coords.latitude,
+    lng: rta.coords.longitude
+  };
+
+  console.log(myLatLng); // imprime las coordenadas acutles
+  const mapEle: HTMLElement = document.getElementById('map'); // elemento crear el mapa (canvas)
+  // create map
+  const map = new google.maps.Map(mapEle, {
+    center: myLatLng,
+    zoom: 17
+  });
+  // añadir loading
+  google.maps.event
+  .addListenerOnce(map, 'idle', () => {
+    console.log('Mapa Cargado');
+    loading.dismiss(); // cierra el loading cuando esta cargado
+  });
+  // añadir marker
+  const marker = new google.maps.Marker({
+    position: {
+      lat: myLatLng.lat,
+      lng: myLatLng.lng
+    },
+    map: map,
+    title: 'Aquí Estas!'
+  });
+  }
 
   //  *funcion para mostrar pop over
    async mostrarPop( event ) {

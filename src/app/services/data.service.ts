@@ -7,45 +7,29 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
   // creamos un arreglo temporal
   private arr: any = [
     {
-      NombreUsuario: '',
+      correoUsuario: '',
       contrasena: ''
     }
   ];
 
-  // simulamos un arreglo de usuarios esto lo obtendremos de la BD
-  private usuarios: any[] = [
-    {
-      idUsuario: 1,
-      NombreUsuario: 'genecc4@gmail.com',
-      contrasena: '123',
-      img: '/assets/img/0p.jpg'
-    },
-    {
-      idUsuario: 2,
-      NombreUsuario: 'oscar@gmail.com',
-      contrasena: '123'
-    },
-    {
-      idUsuario: 3,
-      NombreUsuario: 'angel@gmail.com',
-      contrasena: '123'
-    },
-    {
-      idUsuario: 4,
-      NombreUsuario: 'osvaldo@gmail.com',
-      contrasena: '123'
-    },
-  ];
+  // espacio para guardar datos de la db
+
+  private usuarios: any[] = [];
 
   // inyectar HttpClient
   constructor( private http: Http,
                private https: HttpClient
-  ) { }
+  ) {
+    this.getUsers().subscribe( data => {
+      this.usuarios = data;
+    });
+  }
 
   // *funcion para obtener los amigos de amigo.json
   getFriends() {
@@ -63,18 +47,18 @@ export class DataService {
 
     for (let usuario of this.usuarios) {
 
-      const user = usuario.NombreUsuario;
-      const pass = usuario.contrasena;
+      const user = usuario.correoUsuario;
+      const pass = usuario.contrasenaUsuario;
 
       if ( user.indexOf( usuarioB) >= 0 ) {
-        this.arr.NombreUsuario = usuarioB;
+        this.arr.correoUsuario = usuarioB;
       } if ( pass.indexOf( contrasenaB) >= 0 ) {
         this.arr.contrasena = contrasenaB;
       }
     }
     try {
 
-      if ((this.arr.NombreUsuario.length >= 1) && (this.arr.contrasena.length >= 1)) {
+      if ((this.arr.correoUsuario.length >= 1) && (this.arr.contrasena.length >= 1)) {
         return true;
       } else {
       return false; }
@@ -86,7 +70,7 @@ export class DataService {
 
   // *Funcion obtener usuario para header
   getUser() {
-    return this.arr.NombreUsuario;
+    return this.arr.correoUsuario;
   }
 
   getEvento() {
@@ -122,6 +106,7 @@ export class DataService {
 
     const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
 
+    this.arr.correoUsuario = data.correoUsuario;
     return new Promise((resolve, reject) => { // creamos una promesa
       this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( data ), options)
       .toPromise()  // has esto..

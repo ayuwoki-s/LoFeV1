@@ -40,16 +40,8 @@ export class RegistroComponent implements OnInit {
 
     console.log('registro', this.registro);
     this.modalCtr.dismiss({
-      item: this.registro // aqui estamos mandando el objeto del evento hacia el padre(Home.page.ts)
+      item: this.registro.value // aqui estamos mandando el objeto del evento hacia el padre(Home.page.ts)
     });
   }
 
-  // *Funcion para meter los datos en la bd
-prueba() {
-  console.log(this.registro.value); // solo para visualizar datos ingresado
-
-  console.log(JSON.stringify( this.registro.value )); // para visualizar si se hace la convercion 
-
-  this.dataSer.putUser(this.registro.value);
-  }
 }

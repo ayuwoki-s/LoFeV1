@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { Observable } from 'rxjs';
 import { IonList, ToastController } from '@ionic/angular';
 
 @Component({
@@ -13,7 +12,7 @@ export class AmigosPage implements OnInit {
   // Creamos un ViewChild para poder manipular el elemento html desde el ts
   @ViewChild('lista') lista: IonList;
   // usamos un contenedor local
-  friends: Observable<any>;
+  friends: any[] = [];
 
   // usaremos un servicio para traer los datos asi que debemos inyectarlo
   constructor(
@@ -23,7 +22,10 @@ export class AmigosPage implements OnInit {
 
   ngOnInit() {
     // guardamos los datos de la consulta para usarla en el html
-    this.friends = this.dataServ.getOtherFriends();
+    this.dataServ.getUsers().subscribe( data => {
+      this.friends = data;
+      console.log('prueba de data', data);
+    });
   }
 
   async presentToast( message: string ) {

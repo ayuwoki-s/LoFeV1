@@ -64,7 +64,7 @@ evento = {
 
 // **** Aqui comienzan las funciones****
   ngOnInit() {
-    this.loadMap(); // Carga el mapa al iniciar
+    // this.loadMap(); // Carga el mapa al iniciar
   }
 
 

@@ -10,12 +10,12 @@
   <ion-list #lista>
 
     <!-- Cuando se usa item-sliding el que se duplica es el sliding y no el item -->
-    <ion-item-sliding *ngFor="let friend of friends | async">
+    <ion-item-sliding *ngFor="let friend of friends">
       <!-- Use el pipe async por que el ngFor solo funciona el arreglos pero estoy usando un Observable -->
       <ion-item >
-        <ion-label>{{ friend.nombre }}</ion-label>
+        <ion-label>{{ friend.nombresUsuario }}</ion-label>
         <ion-avatar slot="start">
-          <img [src]="friend.img">
+          <img [src]="friend.imagenUsuario">
         </ion-avatar>
       </ion-item>
 

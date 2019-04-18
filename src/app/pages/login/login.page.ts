@@ -48,7 +48,9 @@ export class LoginPage implements OnInit {
 
     const { data } = await registro.onDidDismiss();
 
-    console.log( data );
+    this.dataServ.putUser(data.item);
+
+    console.log( 'datos a guardar:', data.item );
 
     this.route.navigate(['/tabas/public']);
   }

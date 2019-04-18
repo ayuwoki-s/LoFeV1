@@ -27,11 +27,11 @@
   <ion-list>
 
     <!-- En esa parte use un pipe personalizado llamado filtro que recibe 2 parametros textoBuscar y nombre -->
-    <ion-item *ngFor="let amigo of amigos | filtro: textoBuscar: 'nombre'" detail (click)="onClick( amigo )">
+    <ion-item *ngFor="let amigo of amigos | filtro: textoBuscar: 'nombresUsuario'" detail (click)="onClick( amigo )">
 
-      <ion-label> {{ amigo.nombre }}</ion-label>
+      <ion-label> {{ amigo.nombresUsuario}}</ion-label>
       <ion-avatar slot="start">
-        <img [src]="amigo.img">
+        <img [src]="amigo.imagenUsuario">
       </ion-avatar>
 
     </ion-item>

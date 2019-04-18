@@ -43,7 +43,7 @@
           <!-- El siguiente item solo aparece cuando la bandera de amigo ya no esta en false -->
           <ion-item *ngIf="amigoFlag">
             <ion-label >Con:</ion-label>
-            <ion-button (click)="openFriends()" style="margin-right: 80px" fill="outline"> {{da.event.nombre}} </ion-button>
+            <ion-button (click)="openFriends()" style="margin-right: 80px" fill="outline"> {{da.event.nombresUsuario}} </ion-button>
             <ion-avatar slot="start" class="border">
               <img [src]="da.event.img">
             </ion-avatar>

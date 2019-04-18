@@ -145,7 +145,7 @@ evento = {
      this.da = data;
      this.evento.Amigos_idAmigos = data.event.idAmigo;
      // this.amigo = data;
-     console.log('Informacion recibida en el padre', data ); // solo es para confirmar los datos recibidos
+     console.log('Informacion recibida en el padre', this.da ); // solo es para confirmar los datos recibidos
     }
 
     async presentToast( message: string ) {

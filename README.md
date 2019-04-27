@@ -8,11 +8,13 @@
 * Conexion a BD.
 * Registro de Nuevos usuarios.
 * Login (sin tokens).
-
+* La ubicacion con maps con busqueda y geolocalizacion.
+  *  despues del npm install agregar la siguiente linea desde el cli
+  1. npm install ngx-google-places-autocomplete
+  2. [Paquete usado](https://www.npmjs.com/package/ngx-google-places-autocomplete)
 
 # Para revisar
 
-* La ubicacion con maps.
 * Insertar imagenes del lado del servidor.
 * Trabajar en funciones de agregado de publicaciones propias.
 * Hacer pruebas a la BD con la interfaz en el lado del servidor.

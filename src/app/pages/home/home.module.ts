@@ -8,6 +8,7 @@ import { HomePage } from './home.page';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   // para usar popover debemos declarar en el entry tambien pata el amigos page(modal)
@@ -19,6 +20,7 @@ import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
     CommonModule,
     FormsModule,
     IonicModule,
+    GooglePlaceModule,
     RouterModule.forChild([
       {
         path: '',

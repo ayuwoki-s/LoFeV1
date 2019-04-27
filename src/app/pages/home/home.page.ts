@@ -20,6 +20,15 @@ export class HomePage implements OnInit {
 usuario: string;
 
 validacion: any = {};
+// datos para obtener la ubicacion por busqueda
+formattedAddress = '';
+formattedAddresslat: any;
+formattedAddresslng: any;
+options = {
+  componentRestrictions : {
+    country: ['MX']
+  }
+};
 
 // *** Datos para guardar en la bd
 evento = {
@@ -27,7 +36,7 @@ evento = {
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
   Fecha: Date(), // iniciar a la fecha del dia
-  Lugar_idLugar: '543', // igualar a googlemaps
+  Lugar_idLugar: '543', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
   Emocion_idEmocion: '',
   Amigos_idAmigos: ''
 };
@@ -64,9 +73,35 @@ evento = {
 
 // **** Aqui comienzan las funciones****
   ngOnInit() {
-    // this.loadMap(); // Carga el mapa al iniciar
+    this.loadMap(); // Carga el mapa al iniciar
   }
 
+  
+  public handleAddressChange(address: any) {
+    this.formattedAddress = address.formatted_address; // regresa un string con el nombre de la ubicacion
+    this.formattedAddresslat = address.geometry.location.lat(); // regresa un number con la latitud buscada
+    this.formattedAddresslng = address.geometry.location.lng(); // regresa un number con la longitud buscada
+    const nueltln = { // objeto con las nuevas coordenadas
+      lat: this.formattedAddresslat,
+      lng: this.formattedAddresslng
+    }
+    console.log(this.formattedAddress, nueltln.lat , nueltln.lng);
+    const mapEle: HTMLElement = document.getElementById('map'); // elemento crear el mapa (canvas)
+    // create map
+    const map = new google.maps.Map(mapEle, {
+      center: nueltln,
+      zoom: 16
+    });
+    // añadir marker con la nueva ubicacion
+  const marker = new google.maps.Marker({
+    position: {
+      lat: nueltln.lat,
+      lng: nueltln.lng
+    },
+    map: map,
+    title: 'Aquí Estas!'
+  });
+  }
 
   async loadMap() {
   const loading = await this.loadingCtrl.create(); // crea un loading

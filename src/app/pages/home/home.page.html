@@ -104,7 +104,9 @@
    </ion-row>
 
    <ion-content padding>
-    <ion-label>Tú ubicación es:</ion-label>
+    <input id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
+    <p>Tu ubicación guardada es: </p><p id="dir"> {{formattedAddress}}</p><hr>
+    <ion-label>Tú ubicación actual:</ion-label>
     <div id="map"></div>
   </ion-content>
   

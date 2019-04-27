@@ -15,12 +15,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // maps
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    GooglePlaceModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule, // importado para peticiones 

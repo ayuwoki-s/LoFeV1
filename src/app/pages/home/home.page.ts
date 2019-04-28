@@ -36,7 +36,7 @@ evento = {
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
   Fecha: Date(), // iniciar a la fecha del dia
-  Lugar_idLugar: 'Ubicacion no guardada', // igualar a googlemaps 
+  Lugar_idLugar: 'Ubicacion no guardada.', // igualar a googlemaps 
   Emocion_idEmocion: '',
   Amigos_idAmigos: ''
 };

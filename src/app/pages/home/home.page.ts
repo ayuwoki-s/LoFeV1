@@ -21,7 +21,7 @@ usuario: string;
 
 validacion: any = {};
 // datos para obtener la ubicacion por busqueda
-formattedAddress = '';
+// formattedAddress = 'Sin ubicación guardada';
 formattedAddresslat: any;
 formattedAddresslng: any;
 options = {
@@ -36,7 +36,7 @@ evento = {
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
   Fecha: Date(), // iniciar a la fecha del dia
-  Lugar_idLugar: '543', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
+  Lugar_idLugar: 'Ubicacion no guardada', // igualar a googlemaps 
   Emocion_idEmocion: '',
   Amigos_idAmigos: ''
 };
@@ -76,16 +76,18 @@ evento = {
     this.loadMap(); // Carga el mapa al iniciar
   }
 
-  
   public handleAddressChange(address: any) {
-    this.formattedAddress = address.formatted_address; // regresa un string con el nombre de la ubicacion
+    this.evento.Lugar_idLugar = address.formatted_address; // regresa un string con el nombre de la ubicacion
     this.formattedAddresslat = address.geometry.location.lat(); // regresa un number con la latitud buscada
     this.formattedAddresslng = address.geometry.location.lng(); // regresa un number con la longitud buscada
     const nueltln = { // objeto con las nuevas coordenadas
       lat: this.formattedAddresslat,
       lng: this.formattedAddresslng
     }
-    console.log(this.formattedAddress, nueltln.lat , nueltln.lng);
+    console.log(this.evento.Lugar_idLugar, nueltln.lat , nueltln.lng);
+    // this.evento.Lugar_idLugar = this.formattedAddress;
+    // console.log(this.evento.Lugar_idLugar);
+
     const mapEle: HTMLElement = document.getElementById('map'); // elemento crear el mapa (canvas)
     // create map
     const map = new google.maps.Map(mapEle, {
@@ -110,7 +112,8 @@ evento = {
   const rta = await this.geolocation.getCurrentPosition(); // obtiene posicion
   const myLatLng = { // objeto de coordenadas
     lat: rta.coords.latitude,
-    lng: rta.coords.longitude
+    lng: rta.coords.longitude,
+    adr: 'Ubicacion por defecto'
   };
 
   console.log(myLatLng); // imprime las coordenadas acutles

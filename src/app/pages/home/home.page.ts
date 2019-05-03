@@ -8,6 +8,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular
 // maps
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoadingController } from '@ionic/angular'; // loading
+// camara
+import { Camera, CameraOptions, DestinationType } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 declare var google; // declaracion del namespace
 
 @Component({
@@ -18,7 +21,7 @@ declare var google; // declaracion del namespace
 export class HomePage implements OnInit {
 
 usuario: string;
-
+image: string;
 validacion: any = {};
 // datos para obtener la ubicacion por busqueda
 // formattedAddress = 'Sin ubicación guardada';
@@ -56,6 +59,8 @@ evento = {
     private dataSer: DataService,
     private formBuild: FormBuilder,
     private geolocation: Geolocation, // mapa
+    private camera: Camera, // camara
+    private webView: WebView,
     private loadingCtrl: LoadingController, // loading
     private toast: ToastController
     ) {
@@ -75,7 +80,7 @@ evento = {
   ngOnInit() {
     this.loadMap(); // Carga el mapa al iniciar
   }
-
+  // funciones de mapas
   public handleAddressChange(address: any) {
     this.evento.Lugar_idLugar = address.formatted_address; // regresa un string con el nombre de la ubicacion
     this.formattedAddresslat = address.geometry.location.lat(); // regresa un number con la latitud buscada
@@ -139,6 +144,26 @@ evento = {
     title: 'Aquí Estas!'
   });
   }
+
+  // funciones de camara
+  takePicture() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    };
+    this.camera.getPicture(options)
+    .then((imageData) => {
+      this.image = this.webView.convertFileSrc(imageData);
+      this.evento.Imagen = this.image;
+      // this.image = 'data:image/jpeg;base64,' + imageData;
+    }, (err) => {
+      console.log(err);
+    });
+  }
+
 
   //  *funcion para mostrar pop over
    async mostrarPop( event ) {

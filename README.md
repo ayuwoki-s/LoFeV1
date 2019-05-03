@@ -13,7 +13,7 @@
   1. npm install ngx-google-places-autocomplete
   2. [Paquete usado](https://www.npmjs.com/package/ngx-google-places-autocomplete)
  * La foto del evento no la va a tomar directamente sino que abrira su galeria y seleccionara la foto
-  * paquetes y plugins usados:
+  * La camara no sirve con ionic serve ni con devapp, la probe con un emulador, paquetes y plugins usados:
   
   1. ionic cordova plugin add cordova-plugin-camera
   2. npm install @ionic-native/camera

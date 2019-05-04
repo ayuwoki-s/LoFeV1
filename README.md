@@ -27,4 +27,4 @@
 * Trabajar en funciones de agregado de publicaciones propias.
 * Hacer pruebas a la BD con la interfaz en el lado del servidor.
 
-* Ya estoy checando como contruir el apk, ya casi lo tengo :v
+* Ya estoy checando como contruir el apk, ya casi lo tengo :v (yo asi hago las mias > https://www.nigmacode.com/ionic/Exportar-y-firmar-APK-en-Ionic ..... y asi las firmo http://jonsegador.com/2014/11/firmar-aplicacion-android-sin-utilizar-eclipse-android-studio/)

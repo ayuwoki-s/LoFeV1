@@ -215,7 +215,7 @@ evento = {
     prueba() {
       console.log('Objeto a enviar:', this.evento);
       console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
-      this.dataSer.putEvent( this.evento);
+      this.dataSer.putEvent( this.evento)
       this.reload();
       this.presentToast('Evento publicado');
     }

@@ -74,9 +74,10 @@
             </ion-col>
   
             <ion-col>
-                <ion-button>
+                <ion-button (click)="takePicture()">
                     <ion-icon slot="icon-only" name="camera"></ion-icon>
                 </ion-button>
+                <img *ngIf="image" [src]="image" alt="image">
             </ion-col>
             
           </ion-row>
@@ -105,7 +106,7 @@
 
    <ion-content padding id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange2($event)">
     <input id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
-    <p>Tu ubicación guardada es: </p><p id="dir"> {{formattedAddress}}</p><hr>
+    <p>Tu ubicación guardada es: </p><p id="dir"> {{evento.Lugar_idLugar}}</p> <hr> 
     <ion-label>Tú ubicación actual:</ion-label>
     <div id="map"></div>
   </ion-content>

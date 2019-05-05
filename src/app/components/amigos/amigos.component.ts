@@ -13,6 +13,9 @@ export class AmigosComponent implements OnInit {
 
    amigos: any[] = [];
    textoBuscar = '';
+   amig = {
+     img: ''
+   };
 
   // usaremos un modal asi que inyectamos el modalCtr
   constructor(
@@ -25,6 +28,10 @@ export class AmigosComponent implements OnInit {
    this.dataServ.getUsers().subscribe( data => {
      console.log( data);
      this.amigos = data;
+   });
+
+   this.dataServ.getFriends().subscribe( data => {
+      this.amig = data[0];
    });
   }
 

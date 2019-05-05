@@ -13,6 +13,7 @@ export class AmigosPage implements OnInit {
   @ViewChild('lista') lista: IonList;
   // usamos un contenedor local
   friends: any[] = [];
+  amigo: any;
 
   // usaremos un servicio para traer los datos asi que debemos inyectarlo
   constructor(
@@ -25,6 +26,11 @@ export class AmigosPage implements OnInit {
     this.dataServ.getUsers().subscribe( data => {
       this.friends = data;
       console.log('prueba de data', data);
+    });
+
+    this.dataServ.getFriends().subscribe( data => {
+      this.amigo = data[0];
+      console.log('mi amigo', this.amigo);
     });
   }
 

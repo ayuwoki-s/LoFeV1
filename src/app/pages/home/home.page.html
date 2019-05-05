@@ -16,7 +16,7 @@
 </ion-header>
 
  <!-- ***COMIENZA CONTENT*** -->
-<ion-content class="content">
+<ion-content class="content" (onAddressChange2)="handleAddressChange($event)">
   
   <ion-card color="light" mode="ios">
 
@@ -45,7 +45,7 @@
             <ion-label >Con:</ion-label>
             <ion-button (click)="openFriends()" style="margin-right: 80px" fill="outline"> {{da.event.nombresUsuario}} </ion-button>
             <ion-avatar slot="start" class="border">
-              <img [src]="da.event.img">
+              <img [src]="amigo.img">
             </ion-avatar>
           </ion-item>
     
@@ -103,7 +103,7 @@
       <ion-button expand="full" color="primary" type="submit" (click)="prueba()" >Publicar</ion-button>
    </ion-row>
 
-   <ion-content padding>
+   <ion-content padding id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange2($event)">
     <input id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
     <p>Tu ubicación guardada es: </p><p id="dir"> {{formattedAddress}}</p><hr>
     <ion-label>Tú ubicación actual:</ion-label>

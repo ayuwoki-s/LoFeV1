@@ -1,8 +1,11 @@
 <!-- En esta parte se mostraran los emogis obtenido de la BD -->
   <ion-list>
 
-    <ion-item *ngFor="let emoji of emojis | async" detail (click)="onClick( emoji )">
+    <ion-item *ngFor="let emoji of emojis " detail (click)="onClick( emoji )">
       <ion-label>{{ emoji.nombre }}</ion-label>
+      <ion-avatar slot="end">
+        <img [src]="emoji.img">
+      </ion-avatar>
     </ion-item>
 
   </ion-list>

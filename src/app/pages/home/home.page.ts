@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// ***Imports agregador por el programador
+// ***Imports agregados por el programador
 import { PopoverController, ModalController, ToastController } from '@ionic/angular';
 import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
@@ -18,8 +18,9 @@ declare var google; // declaracion del namespace
 export class HomePage implements OnInit {
 
 usuario: string;
-
+ubicacion: any;
 validacion: any = {};
+
 // datos para obtener la ubicacion por busqueda
 formattedAddress = '';
 formattedAddresslat: any;
@@ -41,6 +42,7 @@ evento = {
   Amigos_idAmigos: ''
 };
 
+  amigo: any;
   dat = {}; // para almacenar emojis
   da = {}; // para almacenar de amigos
 
@@ -69,6 +71,9 @@ evento = {
         contenido: ['', Validators.required]
       });
 
+      this.dataSer.getFriends().subscribe( data => {
+        this.amigo = data[0];
+      });
     }
 
 // **** Aqui comienzan las funciones****
@@ -76,7 +81,10 @@ evento = {
     this.loadMap(); // Carga el mapa al iniciar
   }
 
-  
+  public handleAddressChange2( event ) {
+    console.log('hola', event);
+  }
+
   public handleAddressChange(address: any) {
     this.formattedAddress = address.formatted_address; // regresa un string con el nombre de la ubicacion
     this.formattedAddresslat = address.geometry.location.lat(); // regresa un number con la latitud buscada
@@ -85,7 +93,10 @@ evento = {
       lat: this.formattedAddresslat,
       lng: this.formattedAddresslng
     }
+
+    this.ubicacion = `${nueltln.lat}, ${nueltln.lng}`;
     console.log(this.formattedAddress, nueltln.lat , nueltln.lng);
+    console.log(this.formattedAddress, this.ubicacion);
     const mapEle: HTMLElement = document.getElementById('map'); // elemento crear el mapa (canvas)
     // create map
     const map = new google.maps.Map(mapEle, {
@@ -178,7 +189,7 @@ evento = {
      const { data } = await friends.onDidDismiss(); // usando la destructuracion podemos recibir y extraer los datos del modal
      this.amigoFlag = true; // cambiar a true la bandera para usarla en el html
      this.da = data;
-     this.evento.Amigos_idAmigos = data.event.idAmigo;
+     this.evento.Amigos_idAmigos = data.event.idUsuario;
      // this.amigo = data;
      console.log('Informacion recibida en el padre', this.da ); // solo es para confirmar los datos recibidos
     }
@@ -188,7 +199,7 @@ evento = {
         message,
         duration: 2000,
         position: 'middle',
-        animated: true
+        cssClass: 'toast'
       });
       toast.present();
     }
@@ -203,7 +214,24 @@ evento = {
 
     prueba() {
       console.log('Objeto a enviar:', this.evento);
-      console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion 
+      console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
+      this.dataSer.putEvent( this.evento);
+      this.reload();
+      this.presentToast('Evento publicado');
     }
 
+    reload() {
+
+      this.evento = {
+        NombreEvento: '',
+        Descripcion: '',
+        Imagen: 'default.png', // cuando se tenga plugin de camara
+        Fecha: Date(), // iniciar a la fecha del dia
+        Lugar_idLugar: '', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
+        Emocion_idEmocion: '',
+        Amigos_idAmigos: ''
+      };
+      this.amigoFlag = false;
+      this.emojiFlag = false;
+    }
 }

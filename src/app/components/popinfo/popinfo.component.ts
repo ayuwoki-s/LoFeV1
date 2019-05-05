@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { Observable } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class PopinfoComponent implements OnInit {
 
-  emojis: Observable<any>;
+  emojis: any[] = [];
 
   // simulando los emojis de la bd
 
@@ -20,7 +19,12 @@ export class PopinfoComponent implements OnInit {
     private popOverCtr: PopoverController,
     private dataser: DataService
   ) {
-    this.emojis = this.dataser.getEmojis();
+    this.dataser.getEmojis().subscribe( data => {
+      this.emojis = data;
+      console.log( data);
+      console.log( this.emojis);
+    });
+
   }
 
   ngOnInit() {}

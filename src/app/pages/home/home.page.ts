@@ -22,7 +22,7 @@ ubicacion: any;
 validacion: any = {};
 
 // datos para obtener la ubicacion por busqueda
-formattedAddress = '';
+// formattedAddress = '';
 formattedAddresslat: any;
 formattedAddresslng: any;
 options = {
@@ -37,7 +37,7 @@ evento = {
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
   Fecha: Date(), // iniciar a la fecha del dia
-  Lugar_idLugar: '543', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
+  Lugar_idLugar: 'Ubicacion no guardada', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
   Emocion_idEmocion: '',
   Usuario_idUsuario: ''
 };
@@ -86,17 +86,17 @@ evento = {
   }
 
   public handleAddressChange(address: any) {
-    this.formattedAddress = address.formatted_address; // regresa un string con el nombre de la ubicacion
+    this.evento.Lugar_idLugar = address.formatted_address; // regresa un string con el nombre de la ubicacion
     this.formattedAddresslat = address.geometry.location.lat(); // regresa un number con la latitud buscada
     this.formattedAddresslng = address.geometry.location.lng(); // regresa un number con la longitud buscada
     const nueltln = { // objeto con las nuevas coordenadas
       lat: this.formattedAddresslat,
       lng: this.formattedAddresslng
     }
+    console.log(this.evento.Lugar_idLugar, nueltln.lat , nueltln.lng);
+    // this.evento.Lugar_idLugar = this.formattedAddress;
+    // console.log(this.evento.Lugar_idLugar);
 
-    this.ubicacion = `${nueltln.lat}, ${nueltln.lng}`;
-    console.log(this.formattedAddress, nueltln.lat , nueltln.lng);
-    console.log(this.formattedAddress, this.ubicacion);
     const mapEle: HTMLElement = document.getElementById('map'); // elemento crear el mapa (canvas)
     // create map
     const map = new google.maps.Map(mapEle, {
@@ -215,7 +215,7 @@ evento = {
     prueba() {
       console.log('Objeto a enviar:', this.evento);
       console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
-      // this.dataSer.putEvent( this.evento);
+      this.dataSer.putEvent( this.evento);
       this.reload();
       this.presentToast('Evento publicado');
     }

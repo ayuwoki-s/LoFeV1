@@ -16,7 +16,7 @@
 </ion-header>
 
  <!-- ***COMIENZA CONTENT*** -->
-<ion-content class="content" (onAddressChange2)="handleAddressChange($event)">
+<ion-content class="content">
   
   <ion-card color="light" mode="ios">
 
@@ -104,7 +104,7 @@
       <ion-button expand="full" color="primary" type="submit" (click)="prueba()" >Publicar</ion-button>
    </ion-row>
 
-   <ion-content padding id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange2($event)">
+   <ion-content padding id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places">
     <input id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
     <p>Tu ubicación guardada es: </p><p id="dir"> {{evento.Lugar_idLugar}}</p> <hr> 
     <ion-label>Tú ubicación actual:</ion-label>

@@ -39,7 +39,7 @@ evento = {
   Fecha: Date(), // iniciar a la fecha del dia
   Lugar_idLugar: '543', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
   Emocion_idEmocion: '',
-  Amigos_idAmigos: ''
+  Usuario_idUsuario: ''
 };
 
   amigo: any;
@@ -189,7 +189,7 @@ evento = {
      const { data } = await friends.onDidDismiss(); // usando la destructuracion podemos recibir y extraer los datos del modal
      this.amigoFlag = true; // cambiar a true la bandera para usarla en el html
      this.da = data;
-     this.evento.Amigos_idAmigos = data.event.idUsuario;
+     this.evento.Usuario_idUsuario = data.event.idUsuario;
      // this.amigo = data;
      console.log('Informacion recibida en el padre', this.da ); // solo es para confirmar los datos recibidos
     }
@@ -215,7 +215,7 @@ evento = {
     prueba() {
       console.log('Objeto a enviar:', this.evento);
       console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
-      this.dataSer.putEvent( this.evento)
+      // this.dataSer.putEvent( this.evento);
       this.reload();
       this.presentToast('Evento publicado');
     }
@@ -229,7 +229,7 @@ evento = {
         Fecha: Date(), // iniciar a la fecha del dia
         Lugar_idLugar: '', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
         Emocion_idEmocion: '',
-        Amigos_idAmigos: ''
+        Usuario_idUsuario: ''
       };
       this.amigoFlag = false;
       this.emojiFlag = false;

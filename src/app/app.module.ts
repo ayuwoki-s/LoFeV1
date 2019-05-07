@@ -16,6 +16,9 @@ import { HttpModule } from '@angular/http';
 // maps
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+// camara
+import { Camera } from '@ionic-native/camera/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 
 
 @NgModule({
@@ -35,6 +38,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
+    WebView,
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

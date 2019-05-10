@@ -25,12 +25,14 @@ export class RegistroComponent implements OnInit {
       AMAUsuario: ['', Validators.required],
       correoUsuario: ['', Validators.required],
       nicknameUsuario: ['', Validators.required],
-      imagenUsuario: ['', Validators.required],
+      sexoUsuario: ['', Validators.required],
       contrasenaUsuario: ['', Validators.required]
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   noArguments() {
     this.modalCtr.dismiss();

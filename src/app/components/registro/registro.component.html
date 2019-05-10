@@ -8,7 +8,7 @@
       <ion-buttons slot="end">
           <ion-button>
             <ion-icon name="contact"></ion-icon>
-            <ion-label>Bryan</ion-label>
+            <ion-label>Lofe</ion-label>
           </ion-button>
       </ion-buttons>
   
@@ -55,15 +55,17 @@
         </ion-item>
 
         <ion-item>
-          <ion-label position="floating">Imagen:</ion-label>
-          <ion-input name="imagenUsuario"
-                     formControlName="imagenUsuario"></ion-input>
+          <ion-label position="floating">Sexo:</ion-label>
+                    <ion-select multiple="false" cancelText="Nah" okText="Okay!" formControlName="sexoUsuario">
+                      <ion-select-option value="Masculino" name="sexoUsuario" >Masculino</ion-select-option>
+                      <ion-select-option value="Femenino" name="sexoUsuario" >Femenino</ion-select-option>
+                    </ion-select>         
         </ion-item>
     
         <ion-item>
             <ion-label position="floating">Cotraseña:</ion-label>
             <ion-input name="contrasenaUsuario"
-                       formControlName="contrasenaUsuario"></ion-input>
+                       formControlName="contrasenaUsuario" type="password"></ion-input>
         </ion-item>
     
       </ion-list>

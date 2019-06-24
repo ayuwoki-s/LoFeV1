@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { AmigosPage } from './amigos.page';
+import { ComponentsModule } from 'src/app/components/components.module';
 
  const routes: Routes = [
    {
@@ -19,6 +20,7 @@ import { AmigosPage } from './amigos.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [AmigosPage]

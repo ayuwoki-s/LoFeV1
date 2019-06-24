@@ -65,7 +65,8 @@ evento = {
     private camera: Camera, // camara
     private webView: WebView,
     private loadingCtrl: LoadingController, // loading
-    private toast: ToastController
+    private toast: ToastController,
+    // private user: string
     ) {
 
       this.evento.Fecha = new Date().getDate().toString();

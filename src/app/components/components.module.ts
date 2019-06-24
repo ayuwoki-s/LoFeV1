@@ -7,17 +7,25 @@ import { AmigosComponent } from './amigos/amigos.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { HeaderOptsComponent } from './header-opts/header-opts.component';
 
 @NgModule({
+  entryComponents: [
+    HeaderOptsComponent
+  ],
   declarations: [
     PopinfoComponent,
     AmigosComponent,
-    RegistroComponent
+    RegistroComponent,
+    HeaderComponent,
+    HeaderOptsComponent
   ],
   exports: [
     PopinfoComponent,
     AmigosComponent,
-    RegistroComponent
+    RegistroComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

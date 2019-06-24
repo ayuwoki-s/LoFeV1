@@ -27,8 +27,8 @@ export class LoginPage implements OnInit {
   // cuando se presiona el boton ingresar
   onSubmitTemplate( usuario: string, password: string) {
 
-    console.log('formulario terminado');
-    console.log('usuario' , usuario, 'y password', password);
+    // console.log('formulario terminado');
+    // console.log('usuario' , usuario, 'y password', password);
 
     if ( this.dataServ.buscarUsuario( usuario, password) === true ) {
       this.route.navigate(['/tabas/public']);

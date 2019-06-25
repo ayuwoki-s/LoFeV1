@@ -18,7 +18,7 @@ export class AmigosPage implements OnInit {
   // usaremos un servicio para traer los datos asi que debemos inyectarlo
   constructor(
     private dataServ: DataService,
-    private toast: ToastController
+    // private toast: ToastController
   ) { }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class AmigosPage implements OnInit {
     });
   }
 
-  async presentToast( message: string ) {
+  /*async presentToast( message: string ) {
     const toast = await this.toast.create({
       message,
       duration: 2000,
@@ -42,18 +42,18 @@ export class AmigosPage implements OnInit {
       animated: true
     });
     toast.present();
-  }
+  }*/
 
-  favorite( friend ) {
-    this.presentToast('Añadido a lista de amigos');
-    console.log('amigo seleccionado', friend);
-    this.lista.closeSlidingItems();
-  }
+  // favorite( friend ) {
+  //   this.presentToast('Añadido a lista de amigos');
+  //   console.log('amigo seleccionado', friend);
+  //   this.lista.closeSlidingItems();
+  // }
 
-  share( friend ) {
-    this.presentToast('Se abre perfil del amigo');
-    console.log('amigo seleccionado', friend);
-    this.lista.closeSlidingItems();
-  }
+  // share( friend ) {
+  //   this.presentToast('Se abre perfil del amigo');
+  //   console.log('amigo seleccionado', friend);
+  //   this.lista.closeSlidingItems();
+  // }
 
 }

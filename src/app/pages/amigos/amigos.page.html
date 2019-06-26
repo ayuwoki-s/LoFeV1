@@ -2,11 +2,12 @@
 
 <ion-content>
 
+  <ion-searchbar animated (ionChange)="buscar( $event )"></ion-searchbar>
   <!-- Creamos una referencia con el hash para usar un viewChild en el ts -->
   <ion-list #lista>
 
     <!-- Cuando se usa item-sliding el que se duplica es el sliding y no el item -->
-    <ion-item-sliding *ngFor="let friend of friends">
+    <ion-item-sliding *ngFor="let friend of friends | filtro: textoBuscar: 'nombresUsuario'">
       <!-- Use el pipe async por que el ngFor solo funciona el arreglos pero estoy usando un Observable -->
       <ion-item >
         <ion-label>{{ friend.nombresUsuario }}</ion-label>

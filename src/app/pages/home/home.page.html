@@ -96,21 +96,46 @@
 
     <!-- Desaparece cuado amigoFlag esta en true, por defecto esta en false vet home.page.ts -->
       <ion-col *ngIf="!amigoFlag">
-          <ion-button expand="full" color="danger" fill="solid" (click)="openFriends()">Etiquetar amigos</ion-button>
+          <ion-button expand="full" color="danger" fill="solid" (click)="openFriends()">Etiquetar a alguien</ion-button>
       </ion-col>
-
+<!-- 
       <ion-col>
           <ion-button expand="full" color="primary" type="submit" (click)="onSubmitTemplate()" [disabled]="validacion.invalid">Publicar</ion-button>
-      </ion-col>
-
-      <ion-button expand="full" color="primary" type="submit" (click)="prueba()" >Publicar</ion-button>
+      </ion-col> -->
+      <!-- <ion-col>
+        <ion-button expand="full" color="primary" type="submit" (click)="prueba()" [disabled]="validacion.invalid">Publicar</ion-button>
+      </ion-col> -->
    </ion-row>
 
    <ion-content padding id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places">
-    <input id="inpu" ngx-google-places-autocomplete [options]='options' #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"/>
-    <p>Tu ubicación guardada es: </p><p id="dir"> {{evento.Lugar_idLugar}}</p> <hr> 
-    <ion-label>Tú ubicación actual:</ion-label>
+
+    <ion-card color="light" mode="ios">
+
+        <ion-card-header text-center> <ion-label text-center class="bold">Escribe en donde ocurrio</ion-label> </ion-card-header>
+    
+    </ion-card>
+
+    <input id="inpu" 
+           ngx-google-places-autocomplete [options]='options' 
+           #placesRef="ngx-places" 
+           (onAddressChange)="handleAddressChange($event)" 
+           [(ngModel)]="evento.Lugar_idLugar"
+           class="inputMap"/>
+    
+    <ion-row *ngIf="evento.Lugar_idLugar.length > 0">
+      <ion-col>
+       <p class="ion-text-center">Fue en: </p>
+      </ion-col>
+      <ion-col>
+       <p id="dir"> {{evento.Lugar_idLugar}}</p>
+      </ion-col>
+    </ion-row>
+
     <div id="map"></div>
+
+    <ion-col>
+       <ion-button expand="full" color="primary" type="submit" (click)="prueba()" [disabled]="validacion.invalid">Publicar</ion-button>
+    </ion-col>
   </ion-content>
   
 </ion-content>

@@ -41,7 +41,7 @@ evento = {
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
   Fecha: Date(), // iniciar a la fecha del dia
-  Lugar_idLugar: 'Ubicacion no guardada', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
+  Lugar_idLugar: '', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
   Emocion_idEmocion: '',
   Usuario_idUsuario: ''
 };

@@ -12,6 +12,7 @@ export class AmigosPage implements OnInit {
   // Creamos un ViewChild para poder manipular el elemento html desde el ts
   @ViewChild('lista') lista: IonList;
   // usamos un contenedor local
+  textoBuscar = '';
   friends: any[] = [];
   amigo: any;
 
@@ -34,6 +35,11 @@ export class AmigosPage implements OnInit {
     });
   }
 
+  buscar( event ) {
+    // revisar propiedad debounce cuando se hagan peticiones al servidor
+    console.log( 'buscado', event);
+    this.textoBuscar = event.detail.value; // para obtener el valor del buscador
+  }
   /*async presentToast( message: string ) {
     const toast = await this.toast.create({
       message,

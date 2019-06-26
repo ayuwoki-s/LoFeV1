@@ -3,6 +3,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { RegistroComponent } from 'src/app/components/registro/registro.component';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,17 @@ export class LoginPage implements OnInit {
   constructor(
     private dataServ: DataService, // nuestro servicio 
     private route: Router, // para usar navigated mas abajo
-    private modalCtr: ModalController // para abrir la ventana de registro
+    private modalCtr: ModalController, // para abrir la ventana de registro
+    public toastController: ToastController
   ) { }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
+  }
 
   ngOnInit() {
     this.dataServ.getUsers().subscribe( data => {
@@ -52,7 +62,10 @@ export class LoginPage implements OnInit {
 
     console.log( 'datos a guardar:', data.item );
 
-    this.route.navigate(['/tabas/public']);
+    this.presentToast('Usuario registrado, inicie sesión');
+    
+    setTimeout( () => location.reload(), 2000);
+    // this.route.navigate(['/tabas/public']);
   }
 
 }

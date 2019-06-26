@@ -20,6 +20,7 @@ declare var google; // declaracion del namespace
 })
 export class HomePage implements OnInit {
 
+id: number;
 usuario: string;
 ubicacion: any;
 image: string;
@@ -81,6 +82,9 @@ evento = {
       this.dataSer.getFriends().subscribe( data => {
         this.amigo = data[0];
       });
+
+      this.id = this.dataSer.getUserId();
+      console.log('el id el usuario es:', this.id);
     }
 
 // **** Aqui comienzan las funciones****

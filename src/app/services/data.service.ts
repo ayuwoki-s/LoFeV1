@@ -10,9 +10,12 @@ import { HttpClient } from '@angular/common/http';
 
 export class DataService {
 
+  public id: number;
+
   // creamos un arreglo temporal
   private arr: any = [
     {
+      id: 0,
       correoUsuario: '',
       contrasena: ''
     }
@@ -50,8 +53,12 @@ export class DataService {
       const user = usuario.correoUsuario;
       const pass = usuario.contrasenaUsuario;
 
+      // aqui obtener el id del usuario
+      this.id = usuario.idUsuario;
+
       if ( user.indexOf( usuarioB) >= 0 ) {
         this.arr.correoUsuario = usuarioB;
+        this.arr.id = this.id;
       } if ( pass.indexOf( contrasenaB) >= 0 ) {
         this.arr.contrasena = contrasenaB;
       }
@@ -71,6 +78,10 @@ export class DataService {
   // *Funcion obtener usuario para header
   getUser() {
     return this.arr.correoUsuario;
+  }
+
+  getUserId() {
+    return this.arr.id;
   }
 
   getEvento() {

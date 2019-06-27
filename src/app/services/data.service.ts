@@ -24,6 +24,8 @@ export class DataService {
   // espacio para guardar datos de la db
 
   private usuarios: any[] = [];
+  public eventoNuevo: any[] = [];
+  public eventos: any[] = [];
 
   // inyectar HttpClient
   constructor( private http: Http,
@@ -32,6 +34,12 @@ export class DataService {
     this.getUsers().subscribe( data => {
       this.usuarios = data;
     });
+  }
+
+  // *funcion para guardar eventos nuevos
+  guardarNuevoEvento(evento: any) {
+    this.eventoNuevo = evento;
+    console.log('guarde esto:', this.eventoNuevo);
   }
 
   // *funcion para obtener los amigos de amigo.json
@@ -87,6 +95,10 @@ export class DataService {
   getEvento() {
     // return this.evento;
     return this.https.get<any[]>('/assets/data/eventos.json');
+  }
+
+  getEventoUsuario(id: number) {
+    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/eventos/${id}`);
   }
 
   // regresa la consulta de amigos

@@ -21,8 +21,7 @@ export class PopinfoComponent implements OnInit {
   ) {
     this.dataser.getEmojis().subscribe( data => {
       this.emojis = data;
-      console.log( data);
-      console.log( this.emojis);
+      // console.log( this.emojis);
     });
 
   }
@@ -32,7 +31,7 @@ export class PopinfoComponent implements OnInit {
   // funcion para poder seleccioar opcion
   onClick( emoji ) {
 
-    console.log( 'Elemento enviado: ', emoji );
+    // console.log( 'Elemento enviado: ', emoji );
     // aqui cerramos el popover al ser precionado el elemento y le mandamos los parametros por el dissmis
     this.popOverCtr.dismiss({
       // esto es lo que se va a mandar

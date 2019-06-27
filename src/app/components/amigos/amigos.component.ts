@@ -26,7 +26,7 @@ export class AmigosComponent implements OnInit {
   ngOnInit() {
    // this.amigos = this.dataServ.getFriends();
    this.dataServ.getUsers().subscribe( data => {
-     console.log( data);
+     // console.log( data);
      this.amigos = data;
    });
 
@@ -49,7 +49,7 @@ export class AmigosComponent implements OnInit {
 
   // funcion cuando se selecciona un elemento
   onClick( event ) {
-    console.log(event);
+    // console.log(event);
     this.modalCtr.dismiss({
       event // aqui estamos mandando el objeto del evento hacia el padre(Home.page.ts)
     });

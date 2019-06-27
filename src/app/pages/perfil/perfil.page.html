@@ -2,15 +2,9 @@
 
 <ion-content>
 
-  <ion-row>
-    <ion-item>
-      <ion-label>Usuario</ion-label>
-    </ion-item>
-  </ion-row>
+  <ion-title text-center>Publicaciones</ion-title>
 
-   <ion-title text-center>Publicaciones</ion-title>
-
-  <ion-card *ngFor="let evento of eventos | async">
+  <ion-card *ngFor="let evento of eventos">
 
     <ion-card-header>
       <ion-card-title> {{evento.NombreEvento}} </ion-card-title>

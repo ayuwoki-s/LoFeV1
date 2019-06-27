@@ -26,12 +26,12 @@ export class AmigosPage implements OnInit {
     // guardamos los datos de la consulta para usarla en el html
     this.dataServ.getUsers().subscribe( data => {
       this.friends = data;
-      console.log('prueba de data', data);
+      // console.log('prueba de data', data);
     });
 
     this.dataServ.getFriends().subscribe( data => {
-      this.amigo = data[0];
-      console.log('mi amigo', this.amigo);
+      this.amigo = data[0].img;
+      // console.log('mi amigo', data[0].img);
     });
   }
 

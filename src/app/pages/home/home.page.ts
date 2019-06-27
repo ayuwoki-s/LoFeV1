@@ -87,7 +87,7 @@ evento = {
       this.id = this.dataSer.getUserId();
       this.evento.Usuario = this.id;
       // console.log('el id el usuario es:', this.id);
-      console.log('ya te dije que el id el usuario es:', this.evento.Usuario);
+      // console.log('ya te dije que el id el usuario es:', this.evento.Usuario);
     }
 
 // **** Aqui comienzan las funciones****
@@ -107,7 +107,7 @@ evento = {
       lat: this.formattedAddresslat,
       lng: this.formattedAddresslng
     }
-    console.log(this.evento.Lugar_idLugar, nueltln.lat , nueltln.lng);
+    // console.log(this.evento.Lugar_idLugar, nueltln.lat , nueltln.lng);
     // this.evento.Lugar_idLugar = this.formattedAddress;
     // console.log(this.evento.Lugar_idLugar);
 
@@ -198,13 +198,13 @@ evento = {
 
      // para recibir los datos del popoverinfo usamos la desestructuracion
      const { data } = await popover.onDidDismiss();
-     console.log('Elemento recibido', data);
+     // console.log('Elemento recibido', data);
      this.dat = data; // para sacar nombre e imagen en el html
      this.emojiFlag = true;
      this.evento.Emocion_idEmocion = data.item.idEmoji;
      // this.emoji = data;
      this.i = this.i + 1; // el contador aumenta
-     console.log('Mi emoji es:', this.evento.Emocion_idEmocion); // solo es para referenci
+     // console.log('Mi emoji es:', this.evento.Emocion_idEmocion); // solo es para referenci
    }
 
    // *Funcion para abrir pagina de amigos(Modal) se pone async por que usamos awaits dentro
@@ -225,7 +225,7 @@ evento = {
      this.da = data;
      this.evento.Usuario_idUsuario = data.event.idUsuario;
      // this.amigo = data;
-     console.log('Informacion recibida en el padre', this.da ); // solo es para confirmar los datos recibidos
+     // console.log('Informacion recibida en el padre', this.da ); // solo es para confirmar los datos recibidos
     }
 
     async presentToast( message: string ) {
@@ -251,6 +251,7 @@ evento = {
       // console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
       this.dataSer.putEvent( this.evento);
       this.reload();
+      // this.dataSer.guardarNuevoEvento(this.evento);
       this.presentToast('Evento publicado');
     }
 

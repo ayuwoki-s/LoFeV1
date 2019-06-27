@@ -63,7 +63,7 @@ export class LoginPage implements OnInit {
     console.log( 'datos a guardar:', data.item );
 
     this.presentToast('Usuario registrado, inicie sesión');
-    
+
     setTimeout( () => location.reload(), 2000);
     // this.route.navigate(['/tabas/public']);
   }

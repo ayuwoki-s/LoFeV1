@@ -38,6 +38,7 @@ options = {
 
 // *** Datos para guardar en la bd
 evento = {
+  Usuario: this.id,
   NombreEvento: '',
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
@@ -84,7 +85,9 @@ evento = {
       });
 
       this.id = this.dataSer.getUserId();
-      console.log('el id el usuario es:', this.id);
+      this.evento.Usuario = this.id;
+      // console.log('el id el usuario es:', this.id);
+      console.log('ya te dije que el id el usuario es:', this.evento.Usuario);
     }
 
 // **** Aqui comienzan las funciones****
@@ -135,7 +138,7 @@ evento = {
     lng: rta.coords.longitude
   };
 
-  console.log(myLatLng); // imprime las coordenadas acutles
+  // console.log(myLatLng); // imprime las coordenadas acutles
   const mapEle: HTMLElement = document.getElementById('map'); // elemento crear el mapa (canvas)
   // create map
   const map = new google.maps.Map(mapEle, {
@@ -145,7 +148,7 @@ evento = {
   // añadir loading
   google.maps.event
   .addListenerOnce(map, 'idle', () => {
-    console.log('Mapa Cargado');
+    // console.log('Mapa Cargado');
     loading.dismiss(); // cierra el loading cuando esta cargado
   });
   // añadir marker
@@ -245,7 +248,7 @@ evento = {
 
     prueba() {
       console.log('Objeto a enviar:', this.evento);
-      console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
+      // console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
       this.dataSer.putEvent( this.evento);
       this.reload();
       this.presentToast('Evento publicado');
@@ -254,6 +257,7 @@ evento = {
     reload() {
 
       this.evento = {
+        Usuario: this.id,
         NombreEvento: '',
         Descripcion: '',
         Imagen: 'default.png', // cuando se tenga plugin de camara

@@ -18,6 +18,7 @@ export class HeaderOptsComponent implements OnInit {
 
   logOut() {
     this.router.navigate(['/login']);
+    setTimeout( () => location.reload(), 100);
     this.pop.dismiss();
   }
 

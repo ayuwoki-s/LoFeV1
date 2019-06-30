@@ -48,6 +48,12 @@ export class DataService {
     return this.https.get<any[]>('/assets/data/amigo.json');
   }
 
+  // *funcion para obtener las preguntas de la quiz1
+  getQuiz1() {
+    // return this.http.get<any[]>('/assets/data/amigo.json');
+    return this.https.get<any[]>('/assets/data/quiz1.json');
+  }
+
   // *funcion para obtener usuarios
   getUsuarios() {
     return this.usuarios;

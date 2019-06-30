@@ -9,12 +9,14 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { Quiz1Component } from 'src/app/components/quiz1/quiz1.component';
 
 @NgModule({
   // para usar popover debemos declarar en el entry tambien pata el amigos page(modal)
   entryComponents: [
     PopinfoComponent,
-    AmigosComponent
+    AmigosComponent,
+    Quiz1Component
   ],
   imports: [
     CommonModule,

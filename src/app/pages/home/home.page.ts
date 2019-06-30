@@ -11,6 +11,7 @@ import { LoadingController } from '@ionic/angular'; // loading
 // camara
 import { Camera, CameraOptions, DestinationType } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { Quiz1Component } from 'src/app/components/quiz1/quiz1.component';
 declare var google; // declaracion del namespace
 
 @Component({
@@ -238,15 +239,15 @@ evento = {
       toast.present();
     }
 
-    onSubmitTemplate() {
+    // onSubmitTemplate() {
 
-      this.presentToast('Evento Publicado');
-      console.log(this.evento);
-      // usamos una funcion asincrona para recargar la pagina despues de publicar
-      setTimeout( () => location.reload(), 3000);
-    }
+    //   this.presentToast('Evento Publicado');
+    //   console.log(this.evento);
+    //   // usamos una funcion asincrona para recargar la pagina despues de publicar
+    //   setTimeout( () => location.reload(), 3000);
+    // }
 
-    prueba() {
+    publicar() {
       console.log('Objeto a enviar:', this.evento);
       // console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
       this.dataSer.putEvent( this.evento);
@@ -270,4 +271,13 @@ evento = {
       this.amigoFlag = false;
       this.emojiFlag = false;
     }
+
+    async prueba() {
+      const QUIZ1 = await this.modalCtr.create({
+      component: Quiz1Component
+      });
+
+      await QUIZ1.present();
+    }
+
 }

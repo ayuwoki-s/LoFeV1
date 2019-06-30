@@ -1,0 +1,46 @@
+[
+    {
+        "Numero": 1,
+        "Preguta": "Torpe o entumecido"
+    },
+    {
+        "Numero": 2,
+        "Preguta": "Acalorado"
+    },
+    {
+        "Numero": 3,
+        "Preguta": "Con temblor en las piernas"
+    },
+    {
+        "Numero": 4,
+        "Preguta": "Incapaz de relajarse"
+    },
+    {
+        "Numero": 5,
+        "Preguta": "Con temor de que ocurra lo peor"
+    },
+    {
+        "Numero": 6,
+        "Preguta": "Mareado"
+    },
+    {
+        "Numero": 7,
+        "Preguta": "Con latidos fuertes"
+    },
+    {
+        "Numero": 8,
+        "Preguta": "Inestable"
+    },
+    {
+        "Numero": 9,
+        "Preguta": "Asustado"
+    },
+    {
+        "Numero": 10,
+        "Preguta": "Nervioso"
+    },
+    {
+        "Numero": 11,
+        "Preguta": "Me bloqeé"
+    }
+]

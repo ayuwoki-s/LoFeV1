@@ -9,6 +9,8 @@ import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { HeaderOptsComponent } from './header-opts/header-opts.component';
+import { Quiz1Component } from './quiz1/quiz1.component';
+import { Quiz2Component } from './quiz2/quiz2.component';
 
 @NgModule({
   entryComponents: [
@@ -19,13 +21,17 @@ import { HeaderOptsComponent } from './header-opts/header-opts.component';
     AmigosComponent,
     RegistroComponent,
     HeaderComponent,
-    HeaderOptsComponent
+    HeaderOptsComponent,
+    Quiz1Component,
+    Quiz2Component
   ],
   exports: [
     PopinfoComponent,
     AmigosComponent,
     RegistroComponent,
-    HeaderComponent
+    HeaderComponent,
+    Quiz1Component,
+    Quiz2Component
   ],
   imports: [
     CommonModule,

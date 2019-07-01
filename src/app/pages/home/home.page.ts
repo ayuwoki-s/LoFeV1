@@ -12,6 +12,7 @@ import { LoadingController } from '@ionic/angular'; // loading
 import { Camera, CameraOptions, DestinationType } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Quiz1Component } from 'src/app/components/quiz1/quiz1.component';
+import { Quiz2Component } from 'src/app/components/quiz2/quiz2.component';
 declare var google; // declaracion del namespace
 
 @Component({
@@ -273,11 +274,27 @@ evento = {
     }
 
     async prueba() {
-      const QUIZ1 = await this.modalCtr.create({
+      const QUIZ = await this.modalCtr.create({
       component: Quiz1Component
       });
 
-      await QUIZ1.present();
+      await QUIZ.present();
+
+      const { data } = await QUIZ.onDidDismiss();
+
+      console.log('el total del primer quiz es:', data.total);
+    }
+
+    async prueba2() {
+      const QUIZ = await this.modalCtr.create({
+      component: Quiz2Component
+      });
+
+      await QUIZ.present();
+
+      const { data } = await QUIZ.onDidDismiss();
+
+      console.log('el total del segundo quiz es:', data.total);
     }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-quiz1',
@@ -8,42 +9,49 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class Quiz1Component implements OnInit {
 
-  public sexe: string;
-
+  suma = 0;
   quiz1: any[] = [];
   checks = [
    {
-    name: 'primary',
-    selected: false
+    name: '1',
+    valor: 0
    },
    {
-    name: 'secondary',
-    selected: false
+    name: '2',
+    valor: 1
    },
    {
-    name: 'tertiary',
-    selected: false
+    name: '3',
+    valor: 2
    },
    {
-    name: 'primary',
-    selected: false
+    name: '4',
+    valor: 3
    }
 ];
 
-  constructor(private dataServ: DataService) { }
+  constructor(
+    private dataServ: DataService,
+    private modalCtrl: ModalController
+    ) { }
 
   ngOnInit() {
     this.dataServ.getQuiz1().subscribe( data => {
       this.quiz1 = data;
-      console.log('mis quiz son:', this.quiz1);
+      // console.log('mis quiz son:', this.quiz1);
     });
   }
 
-  onClick(check) {
-    console.log(check);
-    if (check.selected === false) {
-      
-    }
+  obtenerValor(radio) {
+    // console.log('seleccionaste:', radio);
+    this.suma = this.suma + radio.valor;
+    // console.log('tu suma es:', this.suma);
+  }
+
+  cerrar() {
+    this.modalCtrl.dismiss({
+      total: this.suma
+    });
   }
 
 }

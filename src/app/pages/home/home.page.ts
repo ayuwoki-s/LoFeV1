@@ -44,7 +44,7 @@ evento = {
   NombreEvento: '',
   Descripcion: '',
   Imagen: 'default.png', // cuando se tenga plugin de camara
-  Fecha: Date(), // iniciar a la fecha del dia
+  Fecha: '', // iniciar a la fecha del dia
   Lugar_idLugar: '', // igualar a googlemaps ----- este dato seria reemplazado por formattedAddress (creo :v)
   Emocion_idEmocion: '',
   Usuario_idUsuario: ''
@@ -95,6 +95,21 @@ evento = {
 // **** Aqui comienzan las funciones****
   ngOnInit() {
     this.loadMap(); // Carga el mapa al iniciar
+
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    if (month < 10) {
+      // this.evento.Fecha = `${day}-0${month}-${year}`;
+      this.evento.Fecha = `${year}-${month}-${day}`;
+      console.log(this.evento.Fecha);
+    } else {
+      // this.evento.Fecha = `${day}-0${month}-${year}`;
+      this.evento.Fecha = `${year}-${month}-${day}`;
+      console.log(this.evento.Fecha);
+    }
   }
 
   public handleAddressChange2( event ) {
@@ -274,15 +289,24 @@ evento = {
     }
 
     async prueba() {
+
       const QUIZ = await this.modalCtr.create({
-      component: Quiz1Component
+        component: Quiz1Component
       });
 
       await QUIZ.present();
 
       const { data } = await QUIZ.onDidDismiss();
 
-      console.log('el total del primer quiz es:', data.total);
+      const jsonCuestionario = {
+        usuario_idUsuario: this.id,
+        cuestionarioPParte: data.total,
+        cuestionarioFecha: this.evento.Fecha
+      };
+
+      console.log('El primer json a enviar es:', jsonCuestionario);
+
+      this.dataSer.postQuiz( jsonCuestionario );
     }
 
     async prueba2() {
@@ -294,7 +318,13 @@ evento = {
 
       const { data } = await QUIZ.onDidDismiss();
 
-      console.log('el total del segundo quiz es:', data.total);
+      const jsonCuestionario = {
+        cuestionarioSPartel: data.total
+      };
+
+      console.log('El segundo json a enviar es:', jsonCuestionario);
+      this.dataSer.putQuiz( jsonCuestionario, this.id, this.evento.Fecha );
+
     }
 
 }

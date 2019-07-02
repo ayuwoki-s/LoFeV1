@@ -182,4 +182,57 @@ export class DataService {
   }
   // Fin Put tabla usuarios para api
 
+  // POST para cuestionarios
+  postQuiz( data ) {
+
+    const headers = new Headers( // se definen los headers
+      {
+        'Content-Type' : 'application/json'
+      });
+
+    const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
+
+    return new Promise((resolve, reject) => {
+      this.http.post('http://localhost/apiLofe/public/api/cuestionarios/post', JSON.stringify( data ), options)
+      .toPromise()
+      .then((response) => {
+        console.log('API Response : ', response.json());
+        resolve(response.json());
+      })
+      .catch((error) => {
+        console.error('API Error : ', error.status);
+        console.error('API Error : ', JSON.stringify(error));
+        reject(error.json());
+      });
+    });
+  }
+  // Fin POST tabla cuestionarios para api
+
+  // PUT para cuestionarios
+  putQuiz( data, id, fecha ) {
+
+    const headers = new Headers( // se definen los headers
+      {
+        'Content-Type' : 'application/json'
+      });
+
+    const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
+
+    return new Promise((resolve, reject) => {
+      this.http.put(`http://localhost/apiLofe/public/api/cuestionarios/post/${id}/"${fecha}"`, JSON.stringify( data ), options)
+      .toPromise()
+      .then((response) => {
+        console.log('API Response : ', response.json());
+        resolve(response.json());
+      })
+      .catch((error) => {
+        console.error('API Error : ', error.status);
+        console.error('API Error : ', JSON.stringify(error));
+        reject(error.json());
+      });
+    });
+  }
+  // Fin Put tabla cuestionarios para api
+
+
 }

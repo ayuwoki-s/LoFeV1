@@ -11,6 +11,7 @@ export class PerfilPage implements OnInit {
   // eventos: Observable<any>; // se usan observables en lugar de objetos
   eventos: any[] = [];
   id: number;
+  fecha: string;
 
   constructor(
     private dataServ: DataService
@@ -26,6 +27,17 @@ export class PerfilPage implements OnInit {
   }
 
   ngOnInit() {
-  }
+const date = new Date();
+const day = date.getDate();
+const month = date.getMonth() + 1;
+const year = date.getFullYear();
 
+if(month < 10){
+  this.fecha = `${day}-0${month}-${year}`;
+  console.log(this.fecha);
+}else{
+  this.fecha = `${day}-${month}-${year}`;
+  console.log(this.fecha);
+}
+  }
 }

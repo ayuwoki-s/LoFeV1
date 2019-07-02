@@ -1,3 +1,12 @@
+#Para lo del semaforo
+*Empese a implementar un metodo para los cuestionarios, la ponderación es la sig:
+*El cuestionario consta de 21 preguntas, proporcionando un rango de puntuación entre 0 y 63. Los puntos de corte sugeridos para interpretar el resultado obtenido son los siguientes:
+
+**00–21 - Ansiedad muy baja
+22–35 - Ansiedad moderada
+más de 36 - Ansiedad severa
+Cada ítem se puntúa de 0 a 3, correspondiendo la puntuación 0 a "en absoluto", 1 a "levemente, no me molesta mucho", 2 a "moderadamente, fue muy desagradable pero podía soportarlo" y la puntuación 3 a "severamente, casi no podía soportarlo"
+
 # LoFe-V.0.001
 * Para reconstruir, una vez descargado usen npm install en su consola, dentro de la carpeta del proyecto
 * Para usar con devapp usar comando << ionic cordova prepare android >>

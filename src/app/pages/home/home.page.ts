@@ -13,6 +13,7 @@ import { Camera, CameraOptions, DestinationType } from '@ionic-native/camera/ngx
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Quiz1Component } from 'src/app/components/quiz1/quiz1.component';
 import { Quiz2Component } from 'src/app/components/quiz2/quiz2.component';
+import {isNullOrUndefined} from 'util';
 declare var google; // declaracion del namespace
 
 @Component({
@@ -28,6 +29,7 @@ ubicacion: any;
 image: string;
 validacion: any = {};
 respuestaCuest: any;
+respuestaCuest2: any;
 
 // datos para obtener la ubicacion por busqueda
 // formattedAddress = '';
@@ -118,11 +120,20 @@ evento = {
       console.log('mis cuestionarios son:', this.respuestaCuest);
     });
 
+    this.consultarSParte();
+
   }
 
   consultarPParte() {
     this.dataSer.getPParte( this.id, this.evento.Fecha).subscribe( data => {
       console.log('respuesta de PPARTE:', data);
+    });
+  }
+
+  consultarSParte() {
+    this.dataSer.getSParte( this.id, this.evento.Fecha).subscribe( data => {
+      this.respuestaCuest2 = data[0].cuestionarioSPartel;
+      console.log('respuesta de SPARTE:', this.respuestaCuest2);
     });
   }
 
@@ -343,11 +354,18 @@ evento = {
 
     post() {
       if ( Array.isArray(this.respuestaCuest) === true) {
+        this.consultarSParte();
+        if (isNullOrUndefined(this.respuestaCuest2)) {
+          console.log('te falta responder el segundo cuestionario!');
+          console.log('se abre segunda parte del cuestionario');
+          this.prueba2();
+        } else {
+          console.log('Ya se han respondido los 2 cuestionarios por hoy, publicacion normal!');
+        }
         console.log('Tienes un arreglo!');
-        console.log('se abre segunda parte del cuestionario');
-        this.prueba2();
       } else {
-        console.log('valla esto no es un arreglo');
+
+        console.log('Debes responder el primer cuestionario');
         console.log('se abre primera parte del cuestionario');
         this.prueba();
       }

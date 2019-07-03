@@ -234,13 +234,21 @@ export class DataService {
   }
   // Fin Put tabla cuestionarios para api
 
-    // Get tabla usuarios de api
-    getPParte(id, fecha) {
-      // console.log('Estoy recibiendo esta fecha:', fecha);
-      // console.log(`el query es: http://localhost/apiLofe/public/api/lugares/${id}/${fecha}`);
-      return this.https.get<any[]>(`http://localhost/apiLofe/public/api/lugares/${id}/"${fecha}"`);
-    }
-    // Final Get
+  // Get tabla usuarios de api
+  getPParte(id, fecha) {
+    // console.log('Estoy recibiendo esta fecha:', fecha);
+    // console.log(`el query es: http://localhost/apiLofe/public/api/lugares/${id}/${fecha}`);
+    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/lugares/${id}/"${fecha}"`);
+  }
+  // Final Get
+
+  // Get tabla usuarios de api
+  getSParte(id, fecha) {
+    // console.log('Estoy recibiendo esta fecha:', fecha);
+    // console.log(`el query es: http://localhost/apiLofe/public/api/lugares/${id}/${fecha}`);
+    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/cuestionarios/${id}/"${fecha}"`);
+  }
+  // Final Get
 
 
 }

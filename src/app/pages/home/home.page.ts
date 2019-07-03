@@ -27,6 +27,7 @@ usuario: string;
 ubicacion: any;
 image: string;
 validacion: any = {};
+respuestaCuest: any;
 
 // datos para obtener la ubicacion por busqueda
 // formattedAddress = '';
@@ -110,6 +111,19 @@ evento = {
       this.evento.Fecha = `${year}-${month}-${day}`;
       console.log(this.evento.Fecha);
     }
+
+    this.dataSer.getPParte(this.id, this.evento.Fecha).subscribe( data => {
+      // console.log('enviare esta fecha:', this.evento.Fecha);
+      this.respuestaCuest = data;
+      console.log('mis cuestionarios son:', this.respuestaCuest);
+    });
+
+  }
+
+  consultarPParte() {
+    this.dataSer.getPParte( this.id, this.evento.Fecha).subscribe( data => {
+      console.log('respuesta de PPARTE:', data);
+    });
   }
 
   public handleAddressChange2( event ) {
@@ -325,6 +339,18 @@ evento = {
       console.log('El segundo json a enviar es:', jsonCuestionario);
       this.dataSer.putQuiz( jsonCuestionario, this.id, this.evento.Fecha );
 
+    }
+
+    post() {
+      if ( Array.isArray(this.respuestaCuest) === true) {
+        console.log('Tienes un arreglo!');
+        console.log('se abre segunda parte del cuestionario');
+        this.prueba2();
+      } else {
+        console.log('valla esto no es un arreglo');
+        console.log('se abre primera parte del cuestionario');
+        this.prueba();
+      }
     }
 
 }

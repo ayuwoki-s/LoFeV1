@@ -11,33 +11,40 @@ export class PerfilPage implements OnInit {
   // eventos: Observable<any>; // se usan observables en lugar de objetos
   eventos: any[] = [];
   id: number;
-  fecha: string;
+  Fecha: string;
 
   constructor(
     private dataServ: DataService
   ) {
+
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    if (month < 10) {
+      // this.evento.Fecha = `${day}-0${month}-${year}`;
+      this.Fecha = `${year}-${month}-${day}`;
+      // console.log(this.evento.Fecha);
+    } else {
+      // this.evento.Fecha = `${day}-0${month}-${year}`;
+      this.Fecha = `${year}-${month}-${day}`;
+      // console.log(this.evento.Fecha);
+    }
+
     // this.eventos = this.dataServ.getEvento();
     this.id = this.dataServ.getUserId();
 
     this.dataServ.getEventoUsuario(this.id).subscribe( data => {
-      // console.log('mis eventos:', data);
+      console.log('mis eventos:', data);
       this.eventos = data;
     });
     // this.eventos.unshift(this.dataServ.eventoNuevo);
+    this.dataServ.getPParte(this.id, this.Fecha).subscribe( data => {
+      console.log('mis cuestionarios son:', data);
+    });
   }
 
-  ngOnInit() {
-const date = new Date();
-const day = date.getDate();
-const month = date.getMonth() + 1;
-const year = date.getFullYear();
+  ngOnInit() {}
 
-if(month < 10){
-  this.fecha = `${day}-0${month}-${year}`;
-  console.log(this.fecha);
-}else{
-  this.fecha = `${day}-${month}-${year}`;
-  console.log(this.fecha);
-}
   }
-}

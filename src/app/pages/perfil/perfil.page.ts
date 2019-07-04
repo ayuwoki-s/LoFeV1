@@ -40,9 +40,10 @@ export class PerfilPage implements OnInit {
       this.eventos = data;
     });
     // this.eventos.unshift(this.dataServ.eventoNuevo);
-    this.dataServ.getPParte(this.id, this.Fecha).subscribe( data => {
-      console.log('mis cuestionarios son:', data);
-    });
+    // this.dataServ.getPParte(this.id, this.Fecha).subscribe( data => {
+    //   console.log('mis cuestionarios son:', data);
+    // });
+    
   }
 
   ngOnInit() {}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabas',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabasPage implements OnInit {
 
-  constructor() { }
+  constructor(private navCtrl: NavController) { }
 
   ngOnInit() {
+  }
+
+  aHome() {
+    this.navCtrl.navigateRoot('home');
   }
 
 }

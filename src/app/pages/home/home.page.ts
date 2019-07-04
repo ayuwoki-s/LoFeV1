@@ -99,6 +99,14 @@ evento = {
   ngOnInit() {
     this.loadMap(); // Carga el mapa al iniciar
 
+    this.obtenerFecha();
+
+    this.consultarPParte();
+
+    this.consultarSParte();
+  }
+
+  obtenerFecha() {
     const date = new Date();
     const day = date.getDate();
     const month = date.getMonth() + 1;
@@ -107,33 +115,26 @@ evento = {
     if (month < 10) {
       // this.evento.Fecha = `${day}-0${month}-${year}`;
       this.evento.Fecha = `${year}-${month}-${day}`;
-      console.log(this.evento.Fecha);
+      console.log('la fecha es:', this.evento.Fecha);
     } else {
       // this.evento.Fecha = `${day}-0${month}-${year}`;
       this.evento.Fecha = `${year}-${month}-${day}`;
       console.log(this.evento.Fecha);
     }
-
-    this.dataSer.getPParte(this.id, this.evento.Fecha).subscribe( data => {
-      // console.log('enviare esta fecha:', this.evento.Fecha);
-      this.respuestaCuest = data;
-      console.log('mis cuestionarios son:', this.respuestaCuest);
-    });
-
-    this.consultarSParte();
-
   }
 
   consultarPParte() {
-    this.dataSer.getPParte( this.id, this.evento.Fecha).subscribe( data => {
-      console.log('respuesta de PPARTE:', data);
+      this.dataSer.getPParte(this.id, this.evento.Fecha).subscribe( data => {
+      // console.log('enviare esta fecha:', this.evento.Fecha);
+      this.respuestaCuest = data;
+      console.log('mis cuestionarios son:', this.respuestaCuest);
     });
   }
 
   consultarSParte() {
     this.dataSer.getSParte( this.id, this.evento.Fecha).subscribe( data => {
       this.respuestaCuest2 = data[0].cuestionarioSPartel;
-      console.log('respuesta de SPARTE:', this.respuestaCuest2);
+      // console.log('respuesta de SPARTE:', this.respuestaCuest2);
     });
   }
 
@@ -280,21 +281,8 @@ evento = {
       toast.present();
     }
 
-    // onSubmitTemplate() {
-
-    //   this.presentToast('Evento Publicado');
-    //   console.log(this.evento);
-    //   // usamos una funcion asincrona para recargar la pagina despues de publicar
-    //   setTimeout( () => location.reload(), 3000);
-    // }
-
     publicar() {
-      console.log('Objeto a enviar:', this.evento);
-      // console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
-      this.dataSer.putEvent( this.evento);
-      this.reload();
-      // this.dataSer.guardarNuevoEvento(this.evento);
-      this.presentToast('Evento publicado');
+      this.post();
     }
 
     reload() {
@@ -332,6 +320,7 @@ evento = {
       console.log('El primer json a enviar es:', jsonCuestionario);
 
       this.dataSer.postQuiz( jsonCuestionario );
+      this.reload();
     }
 
     async prueba2() {
@@ -349,6 +338,7 @@ evento = {
 
       console.log('El segundo json a enviar es:', jsonCuestionario);
       this.dataSer.putQuiz( jsonCuestionario, this.id, this.evento.Fecha );
+      this.reload();
 
     }
 
@@ -359,8 +349,12 @@ evento = {
           console.log('te falta responder el segundo cuestionario!');
           console.log('se abre segunda parte del cuestionario');
           this.prueba2();
+          // **
+          this.publicacion();
         } else {
           console.log('Ya se han respondido los 2 cuestionarios por hoy, publicacion normal!');
+          this.publicacion();
+          this.reload();
         }
         console.log('Tienes un arreglo!');
       } else {
@@ -368,7 +362,17 @@ evento = {
         console.log('Debes responder el primer cuestionario');
         console.log('se abre primera parte del cuestionario');
         this.prueba();
+
+        this.publicacion();
       }
+    }
+
+    publicacion( ) {
+      console.log('Objeto a enviar:', this.evento);
+      // console.log(JSON.stringify( this.evento )); // para visualizar si se hace la convercion
+      this.dataSer.putEvent( this.evento);
+      // this.dataSer.guardarNuevoEvento(this.evento);
+      this.presentToast('Evento publicado');
     }
 
 }

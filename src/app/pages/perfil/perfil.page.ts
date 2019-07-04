@@ -36,7 +36,7 @@ export class PerfilPage implements OnInit {
     this.id = this.dataServ.getUserId();
 
     this.dataServ.getEventoUsuario(this.id).subscribe( data => {
-      console.log('mis eventos:', data);
+      console.log('la historia de este usuario es:', data);
       this.eventos = data;
     });
     // this.eventos.unshift(this.dataServ.eventoNuevo);

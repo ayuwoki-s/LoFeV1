@@ -13,6 +13,11 @@ export class PerfilPage implements OnInit {
   id: number;
   Fecha: string;
 
+  slideOpts = {
+    allowSlidePrev: false,
+    allowSlideNext: false
+  };
+
   constructor(
     private dataServ: DataService
   ) {
@@ -36,8 +41,12 @@ export class PerfilPage implements OnInit {
     this.id = this.dataServ.getUserId();
 
     this.dataServ.getEventoUsuario(this.id).subscribe( data => {
-      console.log('la historia de este usuario es:', data);
-      this.eventos = data;
+      if (Array.isArray(data) === true) {
+        this.eventos = data;
+        console.log('la historia de este usuario es:', data);
+      } else {
+        console.log('El usuario no tiene historia');
+      }
     });
     // this.eventos.unshift(this.dataServ.eventoNuevo);
     // this.dataServ.getPParte(this.id, this.Fecha).subscribe( data => {

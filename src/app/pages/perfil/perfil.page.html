@@ -2,18 +2,26 @@
 
 <ion-content>
 
-  <ion-title text-center>Publicaciones</ion-title>
+  <ion-slides *ngIf="eventos.length === 0" [options]="slideOpts">
+    <ion-slide>
+      <ion-label>Aun no has publicado nada</ion-label>
+    </ion-slide>
+  </ion-slides>
 
-  <ion-card *ngFor="let evento of eventos">
-
-    <ion-card-header>
-      <ion-card-title> {{evento.NombreEvento}} </ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>
-        {{ evento.Descripcion }}
-    </ion-card-content>
+  <div *ngIf="eventos.length > 0">
+    <ion-title text-center>Publicaciones</ion-title>
   
-  </ion-card>
+    <ion-card *ngFor="let evento of eventos">
+  
+      <ion-card-header>
+        <ion-card-title> {{evento.NombreEvento}} </ion-card-title>
+      </ion-card-header>
+  
+      <ion-card-content>
+          {{ evento.Descripcion }}
+      </ion-card-content>
+    
+    </ion-card>
+  </div>
 
 </ion-content>

@@ -23,7 +23,8 @@ export class LoginPage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message,
-      duration: 2000
+      duration: 2000,
+      position: 'middle'
     });
     toast.present();
   }
@@ -43,7 +44,8 @@ export class LoginPage implements OnInit {
     if ( this.dataServ.buscarUsuario( usuario, password) === true ) {
       this.route.navigate(['/tabas/public']);
     } else {
-      console.log('Acceso denegado');
+      this.presentToast('Usuario o contraseña incorrectos');
+      // console.log('Acceso denegado');
     }
 
   }

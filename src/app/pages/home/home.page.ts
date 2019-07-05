@@ -5,15 +5,17 @@ import { PopinfoComponent } from 'src/app/components/popinfo/popinfo.component';
 import { AmigosComponent } from 'src/app/components/amigos/amigos.component';
 import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms'; // queda pendiente usar forBuilder aqui
+import { Quiz1Component } from 'src/app/components/quiz1/quiz1.component';
+import { Quiz2Component } from 'src/app/components/quiz2/quiz2.component';
+import {isNullOrUndefined} from 'util';
+import { NavController } from '@ionic/angular';
 // maps
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LoadingController } from '@ionic/angular'; // loading
 // camara
 import { Camera, CameraOptions, DestinationType } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
-import { Quiz1Component } from 'src/app/components/quiz1/quiz1.component';
-import { Quiz2Component } from 'src/app/components/quiz2/quiz2.component';
-import {isNullOrUndefined} from 'util';
+
 declare var google; // declaracion del namespace
 
 @Component({
@@ -73,6 +75,7 @@ evento = {
     private webView: WebView,
     private loadingCtrl: LoadingController, // loading
     private toast: ToastController,
+    private navCtrl: NavController
     // private user: string
     ) {
 
@@ -104,6 +107,10 @@ evento = {
     this.consultarPParte();
 
     this.consultarSParte();
+  }
+
+  aHome() {
+    this.navCtrl.navigateRoot('tabas/perfil');
   }
 
   obtenerFecha() {
@@ -320,7 +327,7 @@ evento = {
       console.log('El primer json a enviar es:', jsonCuestionario);
 
       this.dataSer.postQuiz( jsonCuestionario );
-      this.reload();
+      this.aHome();
     }
 
     async prueba2() {
@@ -338,7 +345,7 @@ evento = {
 
       console.log('El segundo json a enviar es:', jsonCuestionario);
       this.dataSer.putQuiz( jsonCuestionario, this.id, this.evento.Fecha );
-      this.reload();
+      this.aHome();
 
     }
 

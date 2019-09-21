@@ -26,21 +26,5 @@
     {
         "Numero": 7,
         "Preguta": "Con latidos fuertes"
-    },
-    {
-        "Numero": 8,
-        "Preguta": "Inestable"
-    },
-    {
-        "Numero": 9,
-        "Preguta": "Asustado"
-    },
-    {
-        "Numero": 10,
-        "Preguta": "Nervioso"
-    },
-    {
-        "Numero": 11,
-        "Preguta": "Me bloqeé"
     }
 ]

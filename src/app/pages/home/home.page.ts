@@ -15,6 +15,7 @@ import { LoadingController } from '@ionic/angular'; // loading
 // camara
 import { Camera, CameraOptions, DestinationType } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { Quiz3Component } from 'src/app/components/quiz3/quiz3.component';
 
 declare var google; // declaracion del namespace
 
@@ -32,6 +33,7 @@ image: string;
 validacion: any = {};
 respuestaCuest: any;
 respuestaCuest2: any;
+respuestaCuest3: any;
 
 // datos para obtener la ubicacion por busqueda
 // formattedAddress = '';
@@ -107,6 +109,8 @@ evento = {
     this.consultarPParte();
 
     this.consultarSParte();
+
+    this.consultarTParte();
   }
 
   aHome() {
@@ -141,7 +145,14 @@ evento = {
   consultarSParte() {
     this.dataSer.getSParte( this.id, this.evento.Fecha).subscribe( data => {
       this.respuestaCuest2 = data[0].cuestionarioSPartel;
-      // console.log('respuesta de SPARTE:', this.respuestaCuest2);
+      console.log('respuesta de SPARTE:', this.respuestaCuest2);
+    });
+  }
+
+  consultarTParte() {
+    this.dataSer.getTParte( this.id, this.evento.Fecha).subscribe( data => {
+      this.respuestaCuest3 = data[0].cuestionarioTParte;
+      console.log('respuesta de TPARTE:', this.respuestaCuest3);
     });
   }
 
@@ -349,17 +360,46 @@ evento = {
 
     }
 
+    async prueba3() {
+      const QUIZ = await this.modalCtr.create({
+      component: Quiz3Component
+      });
+
+      await QUIZ.present();
+
+      const { data } = await QUIZ.onDidDismiss();
+
+      const jsonCuestionario = {
+        cuestionarioTParte: data.total
+      };
+
+      console.log('El tercer json a enviar es:', jsonCuestionario);
+      this.dataSer.putQuiz3( jsonCuestionario, this.id, this.evento.Fecha );
+      this.aHome();
+
+    }
+
     post() {
       if ( Array.isArray(this.respuestaCuest) === true) {
         this.consultarSParte();
+        this.consultarTParte();
         if (isNullOrUndefined(this.respuestaCuest2)) {
           console.log('te falta responder el segundo cuestionario!');
           console.log('se abre segunda parte del cuestionario');
           this.prueba2();
           // **
           this.publicacion();
+
+        } else
+        if (isNullOrUndefined(this.respuestaCuest3)) {
+          console.log('el quiz3 tiene', this.respuestaCuest3);
+          console.log('te falta responder el tercer cuestionario!');
+          console.log('se abre tercera parte del cuestionario');
+          this.prueba3();
+          this.publicacion();
         } else {
-          console.log('Ya se han respondido los 2 cuestionarios por hoy, publicacion normal!');
+          console.log('el quiz3 tiene', this.respuestaCuest3);
+          console.log('Ya se han respondido los 3 cuestionarios por hoy, publicacion normal!');
           this.publicacion();
           this.reload();
         }

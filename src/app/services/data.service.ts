@@ -60,6 +60,10 @@ export class DataService {
     return this.https.get<any[]>('/assets/data/quiz2.json');
   }
 
+  getQuiz3() {
+    // return this.http.get<any[]>('/assets/data/amigo.json');
+    return this.https.get<any[]>('/assets/data/quiz3.json');
+  }
   // *funcion para obtener usuarios
   getUsuarios() {
     return this.usuarios;
@@ -234,10 +238,36 @@ export class DataService {
   }
   // Fin Put tabla cuestionarios para api
 
+  // PUT para cuestionarios 3
+  putQuiz3( data, id, fecha ) {
+
+    const headers = new Headers( // se definen los headers
+      {
+        'Content-Type' : 'application/json'
+      });
+
+    const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
+
+    return new Promise((resolve, reject) => {
+      this.http.put(`http://localhost/apiLofe/public/api/cuestionarios3/post/${id}/"${fecha}"`, JSON.stringify( data ), options)
+      .toPromise()
+      .then((response) => {
+        console.log('API Response : ', response.json());
+        resolve(response.json());
+      })
+      .catch((error) => {
+        console.error('API Error : ', error.status);
+        console.error('API Error : ', JSON.stringify(error));
+        reject(error.json());
+      });
+    });
+  }
+  // Fin Put tabla cuestionarios 3 para api
+
   // Get tabla usuarios de api
   getPParte(id, fecha) {
     // console.log('Estoy recibiendo esta fecha:', fecha);
-    // console.log(`el query es: http://localhost/apiLofe/public/api/lugares/${id}/${fecha}`);
+    // console.log(`el query es: http://172.17.98.212:8080/apiLofe/public/api/lugares/${id}/${fecha}`);
     return this.https.get<any[]>(`http://localhost/apiLofe/public/api/lugares/${id}/"${fecha}"`);
   }
   // Final Get
@@ -245,8 +275,16 @@ export class DataService {
   // Get tabla usuarios de api
   getSParte(id, fecha) {
     // console.log('Estoy recibiendo esta fecha:', fecha);
-    // console.log(`el query es: http://localhost/apiLofe/public/api/lugares/${id}/${fecha}`);
+    // console.log(`el query es: http://172.17.98.212:8080/apiLofe/public/api/lugares/${id}/${fecha}`);
     return this.https.get<any[]>(`http://localhost/apiLofe/public/api/cuestionarios/${id}/"${fecha}"`);
+  }
+  // Final Get
+
+  // Get tabla usuarios de api
+  getTParte(id, fecha) {
+    // console.log('Estoy recibiendo esta fecha:', fecha);
+    // console.log(`el query es: http://172.17.98.212:8080/apiLofe/public/api/lugares/${id}/${fecha}`);
+    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/cuestionarios3/${id}/"${fecha}"`);
   }
   // Final Get
 

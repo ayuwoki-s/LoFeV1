@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { HeaderOptsComponent } from './header-opts/header-opts.component';
 import { Quiz1Component } from './quiz1/quiz1.component';
 import { Quiz2Component } from './quiz2/quiz2.component';
+import { Quiz3Component } from './quiz3/quiz3.component';
 
 @NgModule({
   entryComponents: [
@@ -23,7 +24,8 @@ import { Quiz2Component } from './quiz2/quiz2.component';
     HeaderComponent,
     HeaderOptsComponent,
     Quiz1Component,
-    Quiz2Component
+    Quiz2Component,
+    Quiz3Component
   ],
   exports: [
     PopinfoComponent,
@@ -31,7 +33,8 @@ import { Quiz2Component } from './quiz2/quiz2.component';
     RegistroComponent,
     HeaderComponent,
     Quiz1Component,
-    Quiz2Component
+    Quiz2Component,
+    Quiz3Component
   ],
   imports: [
     CommonModule,

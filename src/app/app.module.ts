@@ -19,6 +19,8 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 // camara
 import { Camera } from '@ionic-native/camera/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -33,7 +35,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
     PipesModule,  // importado
     FormsModule,
     ReactiveFormsModule, // importar Forms y ReactiveFormsModule para usar validacion reactiva
-    HttpModule
+    HttpModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

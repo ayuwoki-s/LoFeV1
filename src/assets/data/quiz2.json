@@ -1,42 +1,30 @@
 [
     {
+        "Numero": 8,
+        "Preguta": "Inestable"
+    },
+    {
+        "Numero": 9,
+        "Preguta": "Asustado"
+    },
+    {
+        "Numero": 10,
+        "Preguta": "Nervioso"
+    },
+    {
+        "Numero": 11,
+        "Preguta": "Me bloqeé"
+    },
+    {
         "Numero": 12,
         "Preguta": "Con temblores en las manos"
     },
     {
-        "Numero": 12,
+        "Numero": 13,
         "Preguta": "Inquieto o inseguro"
     },
     {
         "Numero": 14,
         "Preguta": "Miedo a perder el control"
-    },
-    {
-        "Numero": 15,
-        "Preguta": "Sensación de ahogo"
-    },
-    {
-        "Numero": 16,
-        "Preguta": "Con temor a morir"
-    },
-    {
-        "Numero": 17,
-        "Preguta": "Con miedo"
-    },
-    {
-        "Numero": 18,
-        "Preguta": "Con problemas digestivos"
-    },
-    {
-        "Numero": 19,
-        "Preguta": "Con desvanecimiento"
-    },
-    {
-        "Numero": 20,
-        "Preguta": "Con rubor facial"
-    },
-    {
-        "Numero": 21,
-        "Preguta": "Sudoros@"
     }
 ]

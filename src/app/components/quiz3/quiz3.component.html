@@ -1,0 +1,42 @@
+<ion-toolbar>
+  <ion-title>
+    <ion-label class="ion-text-center">Te sentiste...</ion-label>
+  </ion-title>
+</ion-toolbar>
+
+<ion-content>
+
+  <ion-title>
+    <ion-label>Considera que 1 es No y 4 es bastante</ion-label>
+  </ion-title>
+  
+  <ion-list>
+
+      <ion-grid *ngFor="let pregunta of quiz1">
+  
+        <ion-row class="ion-justify-content-center">
+          <ion-label>{{pregunta.Preguta}}</ion-label>
+        </ion-row>
+    
+        <ion-list>
+            <ion-radio-group>  
+      
+              <ion-row>
+      
+                <ion-col *ngFor="let radio of checks" (click)="obtenerValor(radio)">
+                  <ion-item>
+                    <ion-label>{{radio.name}}</ion-label>
+                    <ion-radio [value]="radio.valor"></ion-radio>
+                  </ion-item>
+                </ion-col>
+      
+              </ion-row>
+      
+            </ion-radio-group>
+          </ion-list> 
+      </ion-grid>
+
+  </ion-list>
+
+  <ion-button expand="full" (click)="cerrar()">Continuar</ion-button>
+</ion-content>

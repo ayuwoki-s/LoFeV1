@@ -26,7 +26,8 @@ export class RegistroComponent implements OnInit {
       correoUsuario: ['', Validators.required],
       nicknameUsuario: ['', Validators.required],
       sexoUsuario: ['', Validators.required],
-      contrasenaUsuario: ['', Validators.required]
+      contrasenaUsuario: ['', Validators.required],
+      NOCUENTA: ['', Validators.required]
     });
   }
 

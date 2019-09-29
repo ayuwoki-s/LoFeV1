@@ -3,5 +3,15 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://localhost/apiLofe/public/"
+    },
+    {
+      "path": "/api",
+      "proxyUrl": "http://159.89.187.64/API_RESTFUK/public/index.php/"
+    }
+  ]
 }

@@ -114,7 +114,7 @@ export class DataService {
   }
 
   getEventoUsuario(id: number) {
-    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/eventos/${id}`);
+    return this.https.get<any[]>(`http://159.89.187.64/API_RESTFUK/public/index.php/api/eventos/${id}`);
   }
 
   // regresa la consulta de amigos
@@ -131,7 +131,7 @@ export class DataService {
 
   // Get tabla usuarios de api
   getUsers() {
-    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/usuarios`);
+    return this.https.get<any[]>(`http://159.89.187.64/API_RESTFUK/public/index.php/api/usuarios`);
   }
   // Final Get
 
@@ -147,7 +147,7 @@ export class DataService {
 
     this.arr.correoUsuario = data.correoUsuario;
     return new Promise((resolve, reject) => { // creamos una promesa
-      this.http.post('http://localhost/apiLofe/public/api/usuarios/post', JSON.stringify( data ), options)
+      this.http.post('http://159.89.187.64/API_RESTFUK/public/index.php/api/usuarios/post', JSON.stringify( data ), options)
       .toPromise()  // has esto..
       .then((response) => { // si hay respuesta favorable
         console.log('API Response : ', response.json());
@@ -171,7 +171,7 @@ export class DataService {
     const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/apiLofe/public/api/eventos/post', JSON.stringify( data ), options)
+      this.http.post('/http://159.89.187.64/API_RESTFUK/public/index.php/api/eventos/post', JSON.stringify( data ), options)
       .toPromise()
       .then((response) => {
         console.log('API Response : ', response.json());
@@ -197,7 +197,7 @@ export class DataService {
     const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
 
     return new Promise((resolve, reject) => {
-      this.http.post('http://localhost/apiLofe/public/api/cuestionarios/post', JSON.stringify( data ), options)
+      this.http.post('http://159.89.187.64/API_RESTFUK/public/index.php/api/cuestionarios/post', JSON.stringify( data ), options)
       .toPromise()
       .then((response) => {
         console.log('API Response : ', response.json());
@@ -223,7 +223,7 @@ export class DataService {
     const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
 
     return new Promise((resolve, reject) => {
-      this.http.put(`http://localhost/apiLofe/public/api/cuestionarios/post/${id}/"${fecha}"`, JSON.stringify( data ), options)
+      this.http.put(`http://159.89.187.64/API_RESTFUK/public/index.php/api/cuestionarios/post/${id}/"${fecha}"`, JSON.stringify( data ), options)
       .toPromise()
       .then((response) => {
         console.log('API Response : ', response.json());
@@ -249,7 +249,7 @@ export class DataService {
     const options = new RequestOptions({ headers: headers }); // guardamos los headers en opciones
 
     return new Promise((resolve, reject) => {
-      this.http.put(`http://localhost/apiLofe/public/api/cuestionarios3/post/${id}/"${fecha}"`, JSON.stringify( data ), options)
+      this.http.put(`http://159.89.187.64/API_RESTFUK/public/index.php/api/cuestionarios3/post/${id}/"${fecha}"`, JSON.stringify( data ), options)
       .toPromise()
       .then((response) => {
         console.log('API Response : ', response.json());
@@ -268,7 +268,7 @@ export class DataService {
   getPParte(id, fecha) {
     // console.log('Estoy recibiendo esta fecha:', fecha);
     // console.log(`el query es: http://172.17.98.212:8080/apiLofe/public/api/lugares/${id}/${fecha}`);
-    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/lugares/${id}/"${fecha}"`);
+    return this.https.get<any[]>(`http://159.89.187.64/API_RESTFUK/public/index.php/api/lugares/${id}/"${fecha}"`);
   }
   // Final Get
 
@@ -276,7 +276,7 @@ export class DataService {
   getSParte(id, fecha) {
     // console.log('Estoy recibiendo esta fecha:', fecha);
     // console.log(`el query es: http://172.17.98.212:8080/apiLofe/public/api/lugares/${id}/${fecha}`);
-    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/cuestionarios/${id}/"${fecha}"`);
+    return this.https.get<any[]>(`/http://159.89.187.64/API_RESTFUK/public/index.php/api/cuestionarios/${id}/"${fecha}"`);
   }
   // Final Get
 
@@ -284,7 +284,7 @@ export class DataService {
   getTParte(id, fecha) {
     // console.log('Estoy recibiendo esta fecha:', fecha);
     // console.log(`el query es: http://172.17.98.212:8080/apiLofe/public/api/lugares/${id}/${fecha}`);
-    return this.https.get<any[]>(`http://localhost/apiLofe/public/api/cuestionarios3/${id}/"${fecha}"`);
+    return this.https.get<any[]>(`http://159.89.187.64/API_RESTFUK/public/index.php/api/cuestionarios3/${id}/"${fecha}"`);
   }
   // Final Get
 
